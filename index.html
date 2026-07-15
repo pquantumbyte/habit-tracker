@@ -34,1532 +34,346 @@
         --font-mono: "Space Mono", monospace;
         --font-name: "Monoton", cursive;
       }
-      * {
-        box-sizing: border-box;
-      }
-      html,
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
       body {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        background:
-          radial-gradient(
-            1200px 600px at 15% -10%,
-            rgba(231, 111, 81, 0.08),
-            transparent 60%
-          ),
-          var(--bg);
+        background: radial-gradient(1200px 600px at 15% -10%, rgba(231, 111, 81, 0.08), transparent 60%), var(--bg);
         color: var(--paper);
         font-family: var(--font-body);
         min-height: 100vh;
         -webkit-font-smoothing: antialiased;
       }
-      ::selection {
-        background: var(--brass);
-        color: var(--bg);
-      }
-
-      a {
-        color: inherit;
-      }
-      button {
-        font-family: inherit;
-      }
+      ::selection { background: var(--brass); color: var(--bg); }
+      a { color: inherit; }
+      button { font-family: inherit; }
 
       /* ---------- Auth UI ---------- */
       .auth-overlay {
-        position: fixed;
-        inset: 0;
-        background: var(--bg);
-        z-index: 200;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
+        position: fixed; inset: 0; background: var(--bg); z-index: 200;
+        display: flex; align-items: center; justify-content: center; padding: 20px;
       }
       .auth-box {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        padding: 40px;
-        border-radius: 8px;
-        width: 100%;
-        max-width: 400px;
-        box-shadow: 0 20px 50px rgba(27, 58, 72, 0.1);
-        text-align: center;
+        background: var(--panel); border: 1px solid var(--line); padding: 40px;
+        border-radius: 8px; width: 100%; max-width: 400px; box-shadow: 0 20px 50px rgba(27, 58, 72, 0.1); text-align: center;
       }
-      .auth-box h2 {
-        font-family: var(--font-main);
-        font-weight: 400;
-        font-size: 2rem;
-        margin: 0 0 10px 0;
-        color: var(--paper);
-      }
-      .auth-box p {
-        font-family: var(--font-sub);
-        font-size: 0.9rem;
-        color: var(--paper-dim);
-        margin-bottom: 30px;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-      }
-      .auth-input {
-        width: 100%;
-        margin-bottom: 15px;
-        padding: 12px 14px;
-        background: var(--bg);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        font-family: var(--font-body);
-        color: var(--paper);
-      }
+      .auth-box h2 { font-family: var(--font-main); font-weight: 400; font-size: 2rem; margin: 0 0 10px 0; color: var(--paper); }
+      .auth-box p { font-family: var(--font-sub); font-size: 0.9rem; color: var(--paper-dim); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 0.1em; }
+      .auth-input { width: 100%; margin-bottom: 15px; padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); font-family: var(--font-body); color: var(--paper); }
       .auth-btn {
-        width: 100%;
-        padding: 12px;
-        background: var(--brass);
-        color: var(--bg);
-        border: none;
-        border-radius: var(--radius);
-        font-weight: 700;
-        cursor: pointer;
-        margin-top: 10px;
-        position: relative;
-        overflow: hidden;
-        transition: background 0.3s ease, transform 0.1s ease;
+        width: 100%; padding: 12px; background: var(--brass); color: var(--bg);
+        border: none; border-radius: var(--radius); font-weight: 700; cursor: pointer; margin-top: 10px;
+        position: relative; overflow: hidden; transition: background 0.3s ease, transform 0.1s ease;
       }
       .auth-btn::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
-        transition: all 0.5s ease;
+        content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent); transition: all 0.5s ease;
       }
-      .auth-btn:hover {
-        background: var(--brass-bright);
-      }
-      .auth-btn:hover::after {
-        left: 100%;
-      }
-      .auth-btn:active {
-        transform: scale(0.98);
-      }
-      .auth-toggle {
-        margin-top: 20px;
-        font-size: 0.85rem;
-        color: var(--paper-dim);
-        cursor: pointer;
-      }
-      .auth-toggle b {
-        color: var(--brass);
-      }
-      .auth-error {
-        color: var(--danger);
-        font-size: 0.85rem;
-        margin-bottom: 15px;
-        display: none;
-      }
+      .auth-btn:hover { background: var(--brass-bright); }
+      .auth-btn:hover::after { left: 100%; }
+      .auth-btn:active { transform: scale(0.98); }
+      .auth-toggle { margin-top: 20px; font-size: 0.85rem; color: var(--paper-dim); cursor: pointer; }
+      .auth-toggle b { color: var(--brass); }
+      .auth-error { color: var(--danger); font-size: 0.85rem; margin-bottom: 15px; display: none; }
 
       /* ---------- layout ---------- */
-      .wrap {
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 24px 28px 100px;
-      }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 24px 28px 100px; }
 
       header.masthead {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 24px;
-        margin-bottom: 24px;
-        gap: 20px;
-        flex-wrap: wrap;
+        display: flex; justify-content: space-between; align-items: flex-start;
+        border-bottom: 1px solid var(--line); padding-bottom: 24px; margin-bottom: 24px; gap: 20px; flex-wrap: wrap;
       }
-      .masthead-left {
-        flex: 1;
-        min-width: 250px;
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-      }
+      .masthead-left { flex: 1; min-width: 250px; display: flex; align-items: flex-start; gap: 16px; }
       
       /* ---------- Menu Icon ---------- */
-      .menu-wrapper {
-        position: relative;
-        margin-top: 6px;
-      }
+      .menu-wrapper { position: relative; margin-top: 6px; }
       .menu-btn {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        transition: all 0.2s ease;
+        background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+        width: 40px; height: 40px; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; transition: all 0.2s ease;
       }
-      .menu-btn:hover {
-        border-color: var(--brass);
-      }
-      .menu-btn span {
-        width: 20px;
-        height: 2px;
-        background: var(--paper);
-        transition: all 0.3s ease;
-      }
+      .menu-btn:hover { border-color: var(--brass); }
+      .menu-btn span { width: 20px; height: 2px; background: var(--paper); transition: all 0.3s ease; }
       .menu-dropdown {
-        position: absolute;
-        top: calc(100% + 8px);
-        left: 0;
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        box-shadow: 0 10px 30px rgba(27, 58, 72, 0.18);
-        min-width: 160px;
-        padding: 6px;
-        display: none;
-        z-index: 50;
-        animation: fadeIn 0.2s ease;
+        position: absolute; top: calc(100% + 8px); left: 0; background: var(--panel); border: 1px solid var(--line);
+        border-radius: var(--radius); box-shadow: 0 10px 30px rgba(27, 58, 72, 0.18); min-width: 160px; padding: 6px; display: none; z-index: 50; animation: fadeIn 0.2s ease;
       }
-      .menu-dropdown.active {
-        display: block;
-      }
+      .menu-dropdown.active { display: block; }
       .menu-item {
-        display: block;
-        width: 100%;
-        text-align: left;
-        padding: 10px 12px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        font-family: var(--font-sub);
-        font-size: 0.9rem;
-        font-weight: 600;
-        border-radius: var(--radius);
-        color: var(--paper-dim);
-        transition: all 0.2s ease;
+        display: block; width: 100%; text-align: left; padding: 10px 12px; background: transparent; border: none; cursor: pointer;
+        font-family: var(--font-sub); font-size: 0.9rem; font-weight: 600; border-radius: var(--radius); color: var(--paper-dim); transition: all 0.2s ease;
       }
-      .menu-item:hover, .menu-item.active {
-        background: var(--panel-raised);
-        color: var(--brass);
-      }
+      .menu-item:hover, .menu-item.active { background: var(--panel-raised); color: var(--brass); }
 
-      .title-block {
-        flex: 1;
-      }
-      .masthead-left h1 {
-        font-family: var(--font-main);
-        font-weight: 400;
-        font-size: 2.4rem;
-        letter-spacing: 0.02em;
-        margin: 0;
-        line-height: 1;
-        color: var(--paper);
-      }
-      .masthead-left .sub {
-        font-family: var(--font-sub);
-        font-size: 0.85rem;
-        font-weight: 600;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--brass);
-        margin-top: 8px;
-      }
-      .masthead-dates {
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        color: var(--paper-dim);
-        margin-top: 12px;
-        line-height: 1.6;
-      }
-      .masthead-dates .date-line {
-        color: var(--paper);
-      }
+      .title-block { flex: 1; }
+      .masthead-left h1 { font-family: var(--font-main); font-weight: 400; font-size: 2.4rem; letter-spacing: 0.02em; margin: 0; line-height: 1; color: var(--paper); }
+      .masthead-left .sub { font-family: var(--font-sub); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass); margin-top: 8px; }
+      .masthead-dates { font-family: var(--font-mono); font-size: 0.78rem; color: var(--paper-dim); margin-top: 12px; line-height: 1.6; }
+      .masthead-dates .date-line { color: var(--paper); }
 
       /* ---------- Profile Button & Dropdown ---------- */
-      .profile-section {
-        display: flex;
-        align-items: flex-start;
-      }
-      .profile-wrapper {
-        position: relative;
-        display: inline-block;
-      }
+      .profile-section { display: flex; align-items: flex-start; }
+      .profile-wrapper { position: relative; display: inline-block; }
       .profile-btn {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        padding: 3px 10px 3px 3px;
-        cursor: pointer;
-        transition:
-          border-color 0.15s ease,
-          background 0.15s ease;
-        font-family: var(--font-body);
+        display: flex; align-items: center; gap: 8px; background: var(--panel); border: 1px solid var(--line);
+        border-radius: 24px; padding: 3px 10px 3px 3px; cursor: pointer; transition: border-color 0.15s ease, background 0.15s ease; font-family: var(--font-body);
       }
-      .profile-btn:hover {
-        border-color: var(--brass);
-        background: var(--panel-raised);
-      }
+      .profile-btn:hover { border-color: var(--brass); background: var(--panel-raised); }
       .profile-avatar {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--brass), var(--brass-bright));
-        color: var(--bg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 1.1rem;
-        font-family: var(--font-sub);
-        text-transform: uppercase;
-        flex-shrink: 0;
-        box-shadow: 0 2px 6px rgba(231, 111, 81, 0.3);
+        width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--brass), var(--brass-bright));
+        color: var(--bg); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem;
+        font-family: var(--font-sub); text-transform: uppercase; flex-shrink: 0; box-shadow: 0 2px 6px rgba(231, 111, 81, 0.3);
       }
-      .profile-caret {
-        font-size: 0.7rem;
-        color: var(--paper-dim);
-        transition: transform 0.15s ease;
-      }
-      .profile-btn.open .profile-caret {
-        transform: rotate(180deg);
-      }
+      .profile-caret { font-size: 0.7rem; color: var(--paper-dim); transition: transform 0.15s ease; }
+      .profile-btn.open .profile-caret { transform: rotate(180deg); }
       .profile-dropdown {
-        position: absolute;
-        top: calc(100% + 8px);
-        right: 0;
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        box-shadow: 0 10px 30px rgba(27, 58, 72, 0.18);
-        min-width: 220px;
-        padding: 6px;
-        display: none;
-        z-index: 50;
-        animation: fadeIn 0.15s ease;
+        position: absolute; top: calc(100% + 8px); right: 0; background: var(--panel); border: 1px solid var(--line);
+        border-radius: var(--radius); box-shadow: 0 10px 30px rgba(27, 58, 72, 0.18); min-width: 220px; padding: 6px; display: none; z-index: 50; animation: fadeIn 0.15s ease;
       }
-      .profile-dropdown.active {
-        display: block;
-      }
+      .profile-dropdown.active { display: block; }
       .dropdown-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        width: 100%;
-        background: transparent;
-        border: none;
-        padding: 10px 12px;
-        text-align: left;
-        cursor: pointer;
-        font-family: var(--font-body);
-        font-size: 0.85rem;
-        color: var(--paper);
-        border-radius: var(--radius);
-        transition:
-          background 0.15s ease,
-          color 0.15s ease;
+        display: flex; align-items: center; gap: 12px; width: 100%; background: transparent; border: none; padding: 10px 12px;
+        text-align: left; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; color: var(--paper); border-radius: var(--radius); transition: background 0.15s ease, color 0.15s ease;
       }
-      .dropdown-item:hover {
-        background: var(--panel-raised);
-      }
-      .dropdown-item.danger {
-        color: var(--danger);
-      }
-      .dropdown-item.danger:hover {
-        background: rgba(214, 40, 40, 0.08);
-      }
-      .dropdown-icon {
-        width: 22px;
-        text-align: center;
-        font-size: 0.95rem;
-        flex-shrink: 0;
-      }
-      .dropdown-divider {
-        height: 1px;
-        background: var(--line);
-        margin: 5px 0;
-      }
-      .dropdown-header {
-        padding: 8px 12px 6px 12px;
-        border-bottom: 1px solid var(--line);
-        margin-bottom: 5px;
-      }
-      .dropdown-header .dh-name {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: var(--paper);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .dropdown-header .dh-email {
-        font-size: 0.72rem;
-        color: var(--paper-dim);
-        font-family: var(--font-mono);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        margin-top: 2px;
-      }
+      .dropdown-item:hover { background: var(--panel-raised); }
+      .dropdown-item.danger { color: var(--danger); }
+      .dropdown-item.danger:hover { background: rgba(214, 40, 40, 0.08); }
+      .dropdown-icon { width: 22px; text-align: center; font-size: 0.95rem; flex-shrink: 0; }
+      .dropdown-divider { height: 1px; background: var(--line); margin: 5px 0; }
+      .dropdown-header { padding: 8px 12px 6px 12px; border-bottom: 1px solid var(--line); margin-bottom: 5px; }
+      .dropdown-header .dh-name { font-size: 0.95rem; font-weight: 700; color: var(--paper); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .dropdown-header .dh-email { font-size: 0.72rem; color: var(--paper-dim); font-family: var(--font-mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px; }
 
       /* ---------- Views ---------- */
-      .view-section {
-        display: none;
-        animation: fadeIn 0.3s ease;
-      }
-      .view-section.active {
-        display: block;
-      }
+      .view-section { display: none; animation: fadeIn 0.3s ease; }
+      .view-section.active { display: block; }
 
       /* ---------- Welcome Banner ---------- */
-      .welcome-banner {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 36px;
-        padding: 18px 24px;
-        background: var(--panel);
-        border-radius: var(--radius);
-        box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05);
-        border: 1px solid var(--line);
-      }
-      .welcome-text {
-        font-family: var(--font-sub);
-        font-size: 1.2rem;
-        font-weight: 500;
-        color: var(--paper-dim);
-        margin: 0;
-        line-height: 1.5;
-      }
-      .welcome-text .welcome-name {
-        font-family: var(--font-name);
-        color: var(--brass);
-        font-size: 1.6rem;
-        margin: 0 6px;
-        display: inline-block;
-        vertical-align: middle;
-        letter-spacing: 1px;
-      }
-      .welcome-text .welcome-quote {
-        display: block;
-        font-family: var(--font-mono);
-        font-size: 0.82rem;
-        color: var(--teal);
-        margin-top: 12px;
-        font-weight: 400;
-      }
+      .welcome-banner { width: 100%; text-align: center; margin-bottom: 36px; padding: 18px 24px; background: var(--panel); border-radius: var(--radius); box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05); border: 1px solid var(--line); }
+      .welcome-text { font-family: var(--font-sub); font-size: 1.2rem; font-weight: 500; color: var(--paper-dim); margin: 0; line-height: 1.5; }
+      .welcome-text .welcome-name { font-family: var(--font-name); color: var(--brass); font-size: 1.6rem; margin: 0 6px; display: inline-block; vertical-align: middle; letter-spacing: 1px; }
+      .welcome-text .welcome-quote { display: block; font-family: var(--font-mono); font-size: 0.82rem; color: var(--teal); margin-top: 12px; font-weight: 400; }
 
       /* ---------- summary strip ---------- */
       .summary {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1px;
-        background: var(--line);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        overflow: hidden;
-        margin-bottom: 40px;
-        box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05);
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line);
+        border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05);
       }
-      .summary .cell {
-        background: var(--panel);
-        padding: 18px 20px;
-      }
-      .summary .cell .num {
-        font-family: var(--font-sub);
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--brass);
-        line-height: 1;
-      }
-      .summary .cell .lbl {
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--paper-dim);
-        margin-top: 8px;
-      }
+      .summary .cell { background: var(--panel); padding: 18px 20px; }
+      .summary .cell .num { font-family: var(--font-sub); font-size: 2rem; font-weight: 700; color: var(--brass); line-height: 1; }
+      .summary .cell .lbl { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--paper-dim); margin-top: 8px; }
 
       /* ---------- add habit ---------- */
-      .add-row {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 10px;
-      }
-      .add-row input[type="text"],
-      .add-row input[type="email"] {
-        flex: 1;
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        color: var(--paper);
-        padding: 12px 14px;
-        font-size: 0.92rem;
-        font-family: var(--font-body);
-      }
-      .add-row input::placeholder {
-        color: var(--paper-dim);
-      }
-      .add-row input:focus {
-        outline: 2px solid var(--brass);
-        outline-offset: 1px;
-        border-color: var(--brass);
-      }
-      .add-row select {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        color: var(--paper);
-        padding: 12px 12px;
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-      }
+      .add-row { display: flex; gap: 10px; margin-bottom: 10px; }
+      .add-row input[type="text"], .add-row input[type="email"] { flex: 1; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); color: var(--paper); padding: 12px 14px; font-size: 0.92rem; font-family: var(--font-body); }
+      .add-row input::placeholder { color: var(--paper-dim); }
+      .add-row input:focus { outline: 2px solid var(--brass); outline-offset: 1px; border-color: var(--brass); }
+      .add-row select { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); color: var(--paper); padding: 12px 12px; font-family: var(--font-mono); font-size: 0.78rem; }
       .btn {
-        background: var(--brass);
-        color: var(--bg);
-        border: none;
-        border-radius: var(--radius);
-        padding: 12px 20px;
-        font-weight: 700;
-        font-size: 0.85rem;
-        cursor: pointer;
-        letter-spacing: 0.02em;
-        transition:
-          background 0.2s ease,
-          transform 0.1s ease,
-          box-shadow 0.2s ease;
-        font-family: var(--font-body);
-        position: relative;
-        overflow: hidden;
+        background: var(--brass); color: var(--bg); border: none; border-radius: var(--radius); padding: 12px 20px; font-weight: 700;
+        font-size: 0.85rem; cursor: pointer; letter-spacing: 0.02em; transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+        font-family: var(--font-body); position: relative; overflow: hidden;
       }
-      .btn:hover {
-        background: var(--brass-bright);
-        box-shadow: 0 4px 10px rgba(231, 111, 81, 0.2);
-      }
-      .btn:active {
-        transform: translateY(1px);
-      }
-      .btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-      .btn.danger {
-        background: var(--danger);
-      }
-      .btn.danger:hover {
-        background: #b51f1f;
-        box-shadow: 0 4px 10px rgba(214, 40, 40, 0.2);
-      }
-      .btn:focus-visible,
-      .icon-btn:focus-visible,
-      input:focus-visible,
-      select:focus-visible {
-        outline: 2px solid var(--brass);
-        outline-offset: 2px;
-      }
+      .btn:hover { background: var(--brass-bright); box-shadow: 0 4px 10px rgba(231, 111, 81, 0.2); }
+      .btn:active { transform: translateY(1px); }
+      .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+      .btn.danger { background: var(--danger); }
+      .btn.danger:hover { background: #b51f1f; box-shadow: 0 4px 10px rgba(214, 40, 40, 0.2); }
+      .btn:focus-visible, .icon-btn:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
 
       /* ---------- frequency options ---------- */
-      .freq-options {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 16px;
-        margin-bottom: 34px;
-        animation: fadeIn 0.2s ease;
-        box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05);
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-4px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .freq-lbl {
-        display: block;
-        font-family: var(--font-mono);
-        font-size: 0.66rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--paper-dim);
-        margin-bottom: 10px;
-      }
-      .picker-grid {
-        display: grid;
-        gap: 6px;
-      }
-      .picker-grid.weekly-cols {
-        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-      }
-      .picker-grid.monthly-cols {
-        grid-template-columns: repeat(7, 1fr);
-      }
-      .pick-btn {
-        background: var(--bg);
-        border: 1px solid var(--line);
-        color: var(--paper-dim);
-        padding: 8px 6px;
-        text-align: center;
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        border-radius: var(--radius);
-        cursor: pointer;
-        transition: all 0.15s ease;
-        white-space: nowrap;
-      }
-      .pick-btn:hover {
-        border-color: var(--brass);
-        color: var(--paper);
-      }
-      .pick-btn.active {
-        background: var(--brass);
-        color: var(--bg);
-        border-color: var(--brass);
-        font-weight: 700;
-      }
+      .freq-options { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 34px; animation: fadeIn 0.2s ease; box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05); }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+      .freq-lbl { display: block; font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--paper-dim); margin-bottom: 10px; }
+      .picker-grid { display: grid; gap: 6px; }
+      .picker-grid.weekly-cols { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+      .picker-grid.monthly-cols { grid-template-columns: repeat(7, 1fr); }
+      .pick-btn { background: var(--bg); border: 1px solid var(--line); color: var(--paper-dim); padding: 8px 6px; text-align: center; font-family: var(--font-mono); font-size: 0.7rem; border-radius: var(--radius); cursor: pointer; transition: all 0.15s ease; white-space: nowrap; }
+      .pick-btn:hover { border-color: var(--brass); color: var(--paper); }
+      .pick-btn.active { background: var(--brass); color: var(--bg); border-color: var(--brass); font-weight: 700; }
 
       /* ---------- register table ---------- */
-      .register {
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        overflow: hidden;
-        background: var(--panel);
-        box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05);
-      }
-
-      .register-head,
-      .habit-row {
-        display: flex;
-        align-items: center;
-        padding: 14px 18px;
-        gap: 16px;
-        border-bottom: 1px solid var(--line);
-      }
-      .habit-row:last-child {
-        border-bottom: none;
-      }
-      .habit-row:hover {
-        background: var(--panel-raised);
-      }
-
-      .habit-info {
-        display: contents;
-      }
-
-      .habit-name {
-        flex: 1 1 200px;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 3px;
-      }
-      .habit-name .title {
-        font-weight: 600;
-        font-size: 1rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        color: var(--paper);
-        font-family: var(--font-body);
-      }
-      .habit-name .cadence {
-        font-family: var(--font-mono);
-        font-size: 0.65rem;
-        color: var(--teal);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .habit-week {
-        display: grid;
-        grid-template-columns: repeat(7, 44px);
-        gap: 6px;
-        flex-shrink: 0;
-      }
-
-      .day-group {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .day-label {
-        display: none;
-      }
-
-      .streak-col {
-        width: 40px;
-        text-align: center;
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        color: var(--paper-dim);
-        flex-shrink: 0;
-      }
-      .streak-col b {
-        color: var(--brass);
-        font-weight: 700;
-      }
-
-      .habit-actions {
-        width: 60px;
-        display: flex;
-        justify-content: flex-end;
-        gap: 4px;
-        flex-shrink: 0;
-      }
-
+      .register { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--panel); box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05); }
+      .register-head, .habit-row { display: flex; align-items: center; padding: 14px 18px; gap: 16px; border-bottom: 1px solid var(--line); }
+      .habit-row:last-child { border-bottom: none; }
+      .habit-row:hover { background: var(--panel-raised); }
+      .habit-info { display: contents; }
+      .habit-name { flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+      .habit-name .title { font-weight: 600; font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--paper); font-family: var(--font-body); }
+      .habit-name .cadence { font-family: var(--font-mono); font-size: 0.65rem; color: var(--teal); text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .habit-week { display: grid; grid-template-columns: repeat(7, 44px); gap: 6px; flex-shrink: 0; }
+      .day-group { display: flex; align-items: center; justify-content: center; }
+      .day-label { display: none; }
+      .streak-col { width: 40px; text-align: center; font-family: var(--font-mono); font-size: 0.8rem; color: var(--paper-dim); flex-shrink: 0; }
+      .streak-col b { color: var(--brass); font-weight: 700; }
+      .habit-actions { width: 60px; display: flex; justify-content: flex-end; gap: 4px; flex-shrink: 0; }
       .stamp {
-        width: 32px;
-        height: 32px;
-        margin: 0 auto;
-        border-radius: 50%;
-        border: 1.5px solid rgba(27, 58, 72, 0.25);
-        background: transparent;
-        cursor: pointer;
-        position: relative;
-        transition:
-          border-color 0.15s ease,
-          background 0.15s ease,
-          box-shadow 0.15s ease;
+        width: 32px; height: 32px; margin: 0 auto; border-radius: 50%; border: 1.5px solid rgba(27, 58, 72, 0.25);
+        background: transparent; cursor: pointer; position: relative; transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
       }
-      .stamp:hover {
-        border-color: var(--brass);
-      }
-      .stamp.done {
-        border-color: var(--brass);
-        background: radial-gradient(
-          circle at 35% 30%,
-          var(--brass-bright),
-          var(--brass) 75%
-        );
-        box-shadow: 0 2px 6px rgba(231, 111, 81, 0.4);
-      }
-      .stamp.done::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-        box-shadow: inset 0 0 0 1px rgba(255, 252, 242, 0.35);
-      }
-      .stamp.future {
-        cursor: not-allowed;
-        opacity: 0.5;
-        border-style: dotted;
-        border-color: var(--paper-dim);
-      }
-      .stamp.locked {
-        cursor: not-allowed;
-        opacity: 0.6;
-        border-style: dashed;
-        border-color: var(--danger);
-        background: rgba(214, 40, 40, 0.05);
-      }
-
+      .stamp:hover { border-color: var(--brass); }
+      .stamp.done { border-color: var(--brass); background: radial-gradient(circle at 35% 30%, var(--brass-bright), var(--brass) 75%); box-shadow: 0 2px 6px rgba(231, 111, 81, 0.4); }
+      .stamp.done::after { content: ""; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255, 252, 242, 0.35); }
+      .stamp.future { cursor: not-allowed; opacity: 0.5; border-style: dotted; border-color: var(--paper-dim); }
+      .stamp.locked { cursor: not-allowed; opacity: 0.6; border-style: dashed; border-color: var(--danger); background: rgba(214, 40, 40, 0.05); }
       .icon-btn {
-        background: transparent;
-        border: none;
-        color: var(--paper-dim);
-        cursor: pointer;
-        font-size: 1rem;
-        width: 28px;
-        height: 28px;
-        border-radius: var(--radius);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition:
-          color 0.15s ease,
-          background 0.15s ease;
+        background: transparent; border: none; color: var(--paper-dim); cursor: pointer; font-size: 1rem; width: 28px; height: 28px;
+        border-radius: var(--radius); display: flex; align-items: center; justify-content: center; transition: color 0.15s ease, background 0.15s ease;
       }
-      .icon-btn:hover {
-        color: var(--brass);
-        background: rgba(231, 111, 81, 0.1);
-      }
-      .icon-btn.danger:hover {
-        color: var(--danger);
-        background: rgba(214, 40, 40, 0.1);
-      }
-
-      .register-head .habit-name .title {
-        font-family: var(--font-mono);
-        font-size: 0.66rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--paper-dim);
-      }
-      .register-head .streak-col {
-        font-family: var(--font-mono);
-        font-size: 0.66rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--paper-dim);
-      }
-      .register-head .dcol {
-        text-align: center;
-        font-family: var(--font-mono);
-        font-size: 0.66rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--paper-dim);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2px;
-      }
-      .register-head .dcol .dow {
-        display: block;
-      }
-      .register-head .dcol.today {
-        color: var(--brass);
-      }
-
-      .empty-state {
-        padding: 60px 20px;
-        text-align: center;
-        color: var(--paper-dim);
-      }
-      .empty-state .mark {
-        font-family: var(--font-sub);
-        font-style: italic;
-        font-size: 1.3rem;
-        color: var(--paper);
-        margin-bottom: 6px;
-      }
+      .icon-btn:hover { color: var(--brass); background: rgba(231, 111, 81, 0.1); }
+      .icon-btn.danger:hover { color: var(--danger); background: rgba(214, 40, 40, 0.1); }
+      .register-head .habit-name .title { font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--paper-dim); }
+      .register-head .streak-col { font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--paper-dim); }
+      .register-head .dcol { text-align: center; font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--paper-dim); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+      .register-head .dcol .dow { display: block; }
+      .register-head .dcol.today { color: var(--brass); }
+      .empty-state { padding: 60px 20px; text-align: center; color: var(--paper-dim); }
+      .empty-state .mark { font-family: var(--font-sub); font-style: italic; font-size: 1.3rem; color: var(--paper); margin-bottom: 6px; }
 
       /* ---------- tabs ---------- */
-      .tabs {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 24px;
-        border-bottom: 1px solid var(--line);
-      }
-      .tab {
-        background: transparent;
-        border: none;
-        color: var(--paper-dim);
-        font-family: var(--font-sub);
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        padding: 16px 12px;
-        cursor: pointer;
-        margin-bottom: -1px;
-        border-bottom: 3px solid transparent;
-        transition:
-          color 0.15s ease,
-          border-color 0.15s ease;
-      }
-      .tab:hover {
-        color: var(--paper);
-      }
-      .tab.active {
-        color: var(--brass);
-        border-bottom-color: var(--brass);
-      }
+      .tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 1px solid var(--line); }
+      .tab { background: transparent; border: none; color: var(--paper-dim); font-family: var(--font-sub); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 16px 12px; cursor: pointer; margin-bottom: -1px; border-bottom: 3px solid transparent; transition: color 0.15s ease, border-color 0.15s ease; }
+      .tab:hover { color: var(--paper); }
+      .tab.active { color: var(--brass); border-bottom-color: var(--brass); }
 
       /* ---------- calendar ---------- */
-      .cal-panel {
-        max-width: 520px;
-        margin-left: auto;
-        margin-right: auto;
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: var(--panel);
-        padding: 20px 22px 18px;
-        margin-bottom: 18px;
-        box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05);
-      }
-      .cal-head {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 18px;
-        margin-bottom: 16px;
-      }
-      .cal-month {
-        font-family: var(--font-sub);
-        font-size: 1.4rem;
-        font-weight: 700;
-        min-width: 180px;
-        text-align: center;
-        color: var(--paper);
-        text-transform: capitalize;
-      }
-      .cal-nav {
-        color: var(--paper);
-        font-size: 1.1rem;
-      }
-      .cal-nav:hover {
-        color: var(--brass);
-        background: rgba(231, 111, 81, 0.1);
-      }
-
-      .cal-dow-row {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        font-family: var(--font-mono);
-        font-size: 0.65rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--paper-dim);
-        text-align: center;
-        padding-bottom: 8px;
-      }
-
-      .cal-grid {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: 6px;
-      }
-      .cal-day {
-        aspect-ratio: 1;
-        border-radius: var(--radius);
-        border: 1px solid var(--line-bright);
-        background: var(--bg);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-family: var(--font-mono);
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--paper);
-        position: relative;
-        transition:
-          border-color 0.15s ease,
-          transform 0.1s ease;
-      }
-      .cal-day:hover {
-        border-color: var(--brass);
-      }
-      .cal-day:active {
-        transform: translateY(1px);
-      }
-      .cal-day.pad {
-        visibility: hidden;
-        cursor: default;
-        border: none;
-        background: transparent;
-      }
-      .cal-day.future {
-        cursor: not-allowed;
-        color: var(--paper-dim);
-        opacity: 0.5;
-      }
-      .cal-day.today {
-        border-color: var(--brass);
-        border-width: 2px;
-      }
-      .cal-day.selected {
-        outline: 2px solid var(--brass);
-        outline-offset: 1px;
-      }
-      .cal-day.no-habits {
-        color: var(--paper-dim);
-      }
-
-      .cal-day .status-dot {
-        position: absolute;
-        top: 4px;
-        right: 4px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        z-index: 2;
-        box-shadow: 0 0 0 1.5px var(--bg);
-      }
-      .cal-day .status-dot.dot-green {
-        background: #2a9d8f;
-      }
-      .cal-day .status-dot.dot-yellow {
-        background: #f4a261;
-      }
-      .cal-day .status-dot.dot-red {
-        background: #d62828;
-      }
-
-      .dot-legend {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 24px;
-        margin-top: 18px;
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        color: var(--paper-dim);
-      }
-      .dot-legend .item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .dot-legend .legend-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-      }
-      .dot-legend .ld-green {
-        background: #2a9d8f;
-      }
-      .dot-legend .ld-yellow {
-        background: #f4a261;
-      }
-      .dot-legend .ld-red {
-        background: #d62828;
-      }
+      .cal-panel { max-width: 520px; margin-left: auto; margin-right: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 20px 22px 18px; margin-bottom: 18px; box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05); }
+      .cal-head { display: flex; align-items: center; justify-content: center; gap: 18px; margin-bottom: 16px; }
+      .cal-month { font-family: var(--font-sub); font-size: 1.4rem; font-weight: 700; min-width: 180px; text-align: center; color: var(--paper); text-transform: capitalize; }
+      .cal-nav { color: var(--paper); font-size: 1.1rem; }
+      .cal-nav:hover { color: var(--brass); background: rgba(231, 111, 81, 0.1); }
+      .cal-dow-row { display: grid; grid-template-columns: repeat(7, 1fr); font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--paper-dim); text-align: center; padding-bottom: 8px; }
+      .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+      .cal-day { aspect-ratio: 1; border-radius: var(--radius); border: 1px solid var(--line-bright); background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; font-family: var(--font-mono); font-size: 0.9rem; font-weight: 500; color: var(--paper); position: relative; transition: border-color 0.15s ease, transform 0.1s ease; }
+      .cal-day:hover { border-color: var(--brass); }
+      .cal-day:active { transform: translateY(1px); }
+      .cal-day.pad { visibility: hidden; cursor: default; border: none; background: transparent; }
+      .cal-day.future { cursor: not-allowed; color: var(--paper-dim); opacity: 0.5; }
+      .cal-day.today { border-color: var(--brass); border-width: 2px; }
+      .cal-day.selected { outline: 2px solid var(--brass); outline-offset: 1px; }
+      .cal-day.no-habits { color: var(--paper-dim); }
+      .cal-day .status-dot { position: absolute; top: 4px; right: 4px; width: 8px; height: 8px; border-radius: 50%; z-index: 2; box-shadow: 0 0 0 1.5px var(--bg); }
+      .cal-day .status-dot.dot-green { background: #2a9d8f; }
+      .cal-day .status-dot.dot-yellow { background: #f4a261; }
+      .cal-day .status-dot.dot-red { background: #d62828; }
+      .dot-legend { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 18px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--paper-dim); }
+      .dot-legend .item { display: flex; align-items: center; gap: 8px; }
+      .dot-legend .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+      .dot-legend .ld-green { background: #2a9d8f; }
+      .dot-legend .ld-yellow { background: #f4a261; }
+      .dot-legend .ld-red { background: #d62828; }
 
       /* ---------- day detail panel ---------- */
-      .day-panel {
-        max-width: 520px;
-        margin-left: auto;
-        margin-right: auto;
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: var(--panel);
-        padding: 18px 22px 20px;
-        box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05);
-      }
-      .day-panel-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 12px;
-        margin-bottom: 14px;
-      }
-      .day-panel-title {
-        font-family: var(--font-sub);
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: var(--paper);
-      }
-      .day-section-head {
-        font-family: var(--font-mono);
-        font-size: 0.66rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--paper-dim);
-        margin-top: 14px;
-        margin-bottom: 4px;
-        border-bottom: 1px dashed var(--line);
-        padding-bottom: 4px;
-      }
-      .day-section-head:first-child {
-        margin-top: 0;
-      }
-      .day-section-head.missing {
-        color: var(--danger);
-      }
-      .day-habit-row {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        padding: 9px 0;
-      }
-      .day-habit-row .stamp {
-        margin: 0;
-      }
-      .day-habit-row .name {
-        flex: 1;
-        font-size: 0.95rem;
-        color: var(--paper);
-        font-family: var(--font-body);
-      }
-      .day-habit-row.missing .name {
-        color: var(--paper-dim);
-      }
-      .day-panel-empty {
-        color: var(--paper-dim);
-        font-size: 0.88rem;
-        padding: 6px 0;
-      }
+      .day-panel { max-width: 520px; margin-left: auto; margin-right: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 18px 22px 20px; box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05); }
+      .day-panel-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 14px; }
+      .day-panel-title { font-family: var(--font-sub); font-size: 1.2rem; font-weight: 600; color: var(--paper); }
+      .day-section-head { font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--paper-dim); margin-top: 14px; margin-bottom: 4px; border-bottom: 1px dashed var(--line); padding-bottom: 4px; }
+      .day-section-head:first-child { margin-top: 0; }
+      .day-section-head.missing { color: var(--danger); }
+      .day-habit-row { display: flex; align-items: center; gap: 14px; padding: 9px 0; }
+      .day-habit-row .stamp { margin: 0; }
+      .day-habit-row .name { flex: 1; font-size: 0.95rem; color: var(--paper); font-family: var(--font-body); }
+      .day-habit-row.missing .name { color: var(--paper-dim); }
+      .day-panel-empty { color: var(--paper-dim); font-size: 0.88rem; padding: 6px 0; }
 
       /* ---------- analytics view ---------- */
-      .analytics-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1px;
-        background: var(--line);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        overflow: hidden;
-        margin-bottom: 24px;
-        box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05);
-      }
-      .analytics-grid .cell {
-        background: var(--panel);
-        padding: 16px;
-      }
-      .analytics-grid .cell .num {
-        font-family: var(--font-sub);
-        font-size: 1.8rem;
-        font-weight: 600;
-        color: var(--brass);
-        line-height: 1;
-      }
-      .analytics-grid .cell .lbl {
-        font-family: var(--font-mono);
-        font-size: 0.62rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--paper-dim);
-        margin-top: 6px;
-      }
-      .chart-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 18px;
-        margin-bottom: 24px;
-      }
-      .analytics-card {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 20px;
-        box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05);
-      }
-      .analytics-card.full-width {
-        grid-column: 1 / -1;
-      }
-      .analytics-card h3 {
-        font-family: var(--font-sub);
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin: 0 0 16px 0;
-        color: var(--paper);
-      }
-      .chart-wrap {
-        position: relative;
-        height: 240px;
-      }
-      .table-wrap {
-        overflow-x: auto;
-      }
-      .breakdown-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.9rem;
-        min-width: 480px;
-      }
-      .breakdown-table th,
-      .breakdown-table td {
-        padding: 12px 8px;
-        text-align: left;
-        border-bottom: 1px solid var(--line);
-      }
-      .breakdown-table th {
-        font-family: var(--font-mono);
-        font-size: 0.62rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--paper-dim);
-      }
-      .breakdown-table td.num {
-        font-family: var(--font-mono);
-        color: var(--paper);
-      }
-      .breakdown-table td.num.brass {
-        color: var(--brass);
-        font-weight: 700;
-      }
-      .breakdown-table tr:last-child td {
-        border-bottom: none;
-      }
-      .progress-bar {
-        width: 100%;
-        height: 6px;
-        background: var(--bg);
-        border-radius: 3px;
-        overflow: hidden;
-        margin-top: 4px;
-      }
-      .progress-bar .fill {
-        height: 100%;
-        background: linear-gradient(90deg, var(--teal), var(--brass));
-        border-radius: 3px;
-      }
+      .analytics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05); }
+      .analytics-grid .cell { background: var(--panel); padding: 16px; }
+      .analytics-grid .cell .num { font-family: var(--font-sub); font-size: 1.8rem; font-weight: 600; color: var(--brass); line-height: 1; }
+      .analytics-grid .cell .lbl { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--paper-dim); margin-top: 6px; }
+      .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px; }
+      .analytics-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05); }
+      .analytics-card.full-width { grid-column: 1 / -1; }
+      .analytics-card h3 { font-family: var(--font-sub); font-size: 1.1rem; font-weight: 600; margin: 0 0 16px 0; color: var(--paper); }
+      .chart-wrap { position: relative; height: 240px; }
+      .table-wrap { overflow-x: auto; }
+      .breakdown-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 480px; }
+      .breakdown-table th, .breakdown-table td { padding: 12px 8px; text-align: left; border-bottom: 1px solid var(--line); }
+      .breakdown-table th { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--paper-dim); }
+      .breakdown-table td.num { font-family: var(--font-mono); color: var(--paper); }
+      .breakdown-table td.num.brass { color: var(--brass); font-weight: 700; }
+      .breakdown-table tr:last-child td { border-bottom: none; }
+      .progress-bar { width: 100%; height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+      .progress-bar .fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--brass)); border-radius: 3px; }
 
       /* ---------- Friends View ---------- */
-      .friends-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .friends-card {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 24px;
-        box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05);
-      }
-      .friends-card h3 {
-        font-family: var(--font-sub);
-        font-size: 1.2rem;
-        margin-top: 0;
-        margin-bottom: 16px;
-        color: var(--paper);
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 10px;
-      }
-      .friend-req-item, .friend-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 0;
-        border-bottom: 1px dashed var(--line);
-      }
-      .friend-req-item:last-child, .friend-item:last-child {
-        border-bottom: none;
-      }
-      .friend-info {
-        display: flex;
-        flex-direction: column;
-      }
-      .friend-name {
-        font-weight: 600;
-        color: var(--paper);
-      }
-      .friend-email {
-        font-size: 0.75rem;
-        color: var(--paper-dim);
-        font-family: var(--font-mono);
-      }
-      .empty-text {
-        color: var(--paper-dim);
-        font-size: 0.9rem;
-        text-align: center;
-        padding: 20px 0;
-      }
-      .friend-actions {
-        display: flex;
-        gap: 8px;
-      }
-      .btn-ghost {
-        background: transparent;
-        color: var(--paper-dim);
-        border: 1px solid var(--line);
-        padding: 8px 16px;
-        font-weight: 600;
-        font-size: 0.8rem;
-        cursor: pointer;
-        border-radius: var(--radius);
-        font-family: var(--font-body);
-        transition: all 0.2s ease;
-      }
-      .btn-ghost:hover {
-        color: var(--paper);
-        border-color: var(--paper-dim);
-      }
-      .btn-small {
-        padding: 8px 16px;
-        font-size: 0.8rem;
-      }
-      .comparison-box {
-        margin-top: 20px;
-      }
+      .friends-container { display: grid; grid-template-columns: 1fr; gap: 24px; }
+      .friends-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: 0 4px 20px rgba(27, 58, 72, 0.05); }
+      .friends-card h3 { font-family: var(--font-sub); font-size: 1.2rem; margin-top: 0; margin-bottom: 16px; color: var(--paper); border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+      .friend-req-item, .friend-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+      .friend-req-item:last-child, .friend-item:last-child { border-bottom: none; }
+      .friend-info { display: flex; flex-direction: column; }
+      .friend-name { font-weight: 600; color: var(--paper); }
+      .friend-email { font-size: 0.75rem; color: var(--paper-dim); font-family: var(--font-mono); }
+      .empty-text { color: var(--paper-dim); font-size: 0.9rem; text-align: center; padding: 20px 0; }
+      .friend-actions { display: flex; gap: 8px; }
+      .btn-ghost { background: transparent; color: var(--paper-dim); border: 1px solid var(--line); padding: 8px 16px; font-weight: 600; font-size: 0.8rem; cursor: pointer; border-radius: var(--radius); font-family: var(--font-body); transition: all 0.2s ease; }
+      .btn-ghost:hover { color: var(--paper); border-color: var(--paper-dim); }
+      .btn-small { padding: 8px 16px; font-size: 0.8rem; }
+      .comparison-box { margin-top: 20px; }
 
       /* ---------- edit modal ---------- */
-      .modal-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(27, 58, 72, 0.7);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 100;
-        padding: 20px;
-      }
-      .modal-overlay.active {
-        display: flex;
-      }
-      .modal-box {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        padding: 28px;
-        border-radius: var(--radius);
-        width: 100%;
-        max-width: 500px;
-        max-height: 90vh;
-        overflow-y: auto;
-        box-shadow: 0 20px 50px rgba(27, 58, 72, 0.2);
-      }
-      .modal-box h3 {
-        font-family: var(--font-sub);
-        font-size: 1.6rem;
-        font-weight: 700;
-        margin-top: 0;
-        margin-bottom: 20px;
-        color: var(--paper);
-      }
-      .modal-input {
-        width: 100%;
-        background: var(--bg);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        color: var(--paper);
-        padding: 12px 14px;
-        font-size: 0.92rem;
-        font-family: var(--font-body);
-        margin-bottom: 15px;
-      }
-      .modal-input:focus {
-        outline: 2px solid var(--brass);
-        outline-offset: 1px;
-      }
-      .modal-actions {
-        display: flex;
-        gap: 10px;
-        justify-content: flex-end;
-        margin-top: 25px;
-      }
+      .modal-overlay { position: fixed; inset: 0; background: rgba(27, 58, 72, 0.7); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; }
+      .modal-overlay.active { display: flex; }
+      .modal-box { background: var(--panel); border: 1px solid var(--line); padding: 28px; border-radius: var(--radius); width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 50px rgba(27, 58, 72, 0.2); }
+      .modal-box h3 { font-family: var(--font-sub); font-size: 1.6rem; font-weight: 700; margin-top: 0; margin-bottom: 20px; color: var(--paper); }
+      .modal-input { width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); color: var(--paper); padding: 12px 14px; font-size: 0.92rem; font-family: var(--font-body); margin-bottom: 15px; }
+      .modal-input:focus { outline: 2px solid var(--brass); outline-offset: 1px; }
+      .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 25px; }
 
       /* ---------- Toast notification ---------- */
-      .toast {
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%) translateY(100px);
-        background: var(--paper);
-        color: var(--bg);
-        padding: 12px 24px;
-        border-radius: var(--radius);
-        font-size: 0.85rem;
-        font-family: var(--font-body);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        opacity: 0;
-        transition:
-          opacity 0.25s ease,
-          transform 0.25s ease;
-        z-index: 300;
-        pointer-events: none;
-      }
-      .toast.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-      .toast.success {
-        background: var(--teal);
-      }
-      .toast.error {
-        background: var(--danger);
-      }
+      .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--paper); color: var(--bg); padding: 12px 24px; border-radius: var(--radius); font-size: 0.85rem; font-family: var(--font-body); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); opacity: 0; transition: opacity 0.25s ease, transform 0.25s ease; z-index: 300; pointer-events: none; }
+      .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+      .toast.success { background: var(--teal); }
+      .toast.error { background: var(--danger); }
 
-      footer.note {
-        margin-top: 28px;
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        color: var(--paper-dim);
-        text-align: center;
-        letter-spacing: 0.04em;
-      }
+      footer.note { margin-top: 28px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--paper-dim); text-align: center; letter-spacing: 0.04em; }
 
       /* ---------- responsive breakpoints ---------- */
       @media (max-width: 768px) {
-        .wrap {
-          padding: 20px 20px 80px;
-        }
-        .chart-row {
-          grid-template-columns: 1fr;
-        }
-        .analytics-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .masthead-left h1 {
-          font-size: 1.8rem;
-        }
-        .cal-panel,
-        .day-panel {
-          max-width: 100%;
-        }
-        .register-head {
-          display: none !important;
-        }
+        .wrap { padding: 20px 20px 80px; }
+        .chart-row { grid-template-columns: 1fr; }
+        .analytics-grid { grid-template-columns: repeat(2, 1fr); }
+        .masthead-left h1 { font-size: 1.8rem; }
+        .cal-panel, .day-panel { max-width: 100%; }
+        .register-head { display: none !important; }
       }
 
       @media (max-width: 640px) {
-        .wrap {
-          padding: 20px 16px 80px;
-        }
-
-        header.masthead {
-          flex-direction: row;
-          align-items: flex-start;
-          gap: 12px;
-        }
-        .masthead-left {
-          min-width: auto;
-          flex: 1;
-          gap: 12px;
-        }
-        .masthead-left h1 {
-          font-size: 1.6rem;
-        }
-
-        .welcome-banner {
-          padding: 14px 18px;
-          margin-bottom: 28px;
-        }
-        .welcome-text {
-          font-size: 1rem;
-        }
-        .welcome-text .welcome-name {
-          font-size: 1.3rem;
-        }
-        .welcome-text .welcome-quote {
-          font-size: 0.75rem;
-        }
-
-        .summary {
-          grid-template-columns: repeat(2, 1fr);
-          margin-bottom: 28px;
-        }
-        .summary .cell {
-          padding: 14px 16px;
-        }
-        .summary .cell .num {
-          font-size: 1.6rem;
-        }
-
-        .add-row {
-          flex-wrap: wrap;
-          gap: 8px;
-        }
-        .add-row input[type="text"], .add-row input[type="email"] {
-          flex-basis: 100%;
-        }
-        .add-row select {
-          flex: 1;
-        }
-        .add-row .btn {
-          flex: 1;
-        }
-
-        .tab {
-          padding: 12px 6px;
-          font-size: 0.75rem;
-        }
-
-        .habit-row {
-          display: flex;
-          flex-direction: column;
-          padding: 16px;
-          gap: 14px;
-          align-items: stretch;
-        }
-
-        .habit-info {
-          display: flex;
-          width: 100%;
-          justify-content: space-between;
-          align-items: center;
-          gap: 12px;
-        }
-
-        .habit-name {
-          flex: 1;
-          min-width: 0;
-          gap: 2px;
-        }
-        .habit-name .title {
-          font-size: 1.05rem;
-        }
-        .habit-name .cadence {
-          font-size: 0.7rem;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        .streak-col {
-          width: auto;
-          font-size: 0.9rem;
-          text-align: right;
-        }
-        .habit-actions {
-          width: auto;
-          gap: 8px;
-        }
-        .icon-btn {
-          width: 28px;
-          height: 28px;
-          font-size: 0.9rem;
-        }
-
-        .habit-week {
-          width: 100%;
-          grid-template-columns: repeat(7, 1fr);
-          gap: 4px;
-        }
-
-        .day-group {
-          flex-direction: column;
-          gap: 6px;
-        }
-
-        .day-label {
-          display: block;
-          font-family: var(--font-mono);
-          font-size: 0.65rem;
-          color: var(--paper-dim);
-          text-transform: uppercase;
-          text-align: center;
-        }
-
-        .stamp {
-          width: 100%;
-          max-width: 36px;
-          aspect-ratio: 1;
-          margin: 0 auto;
-        }
-
-        .modal-overlay {
-          align-items: flex-end;
-          padding: 0;
-        }
-        .modal-box {
-          width: 100%;
-          max-width: 100%;
-          border-radius: 8px 8px 0 0;
-          border-left: none;
-          border-right: none;
-          border-bottom: none;
-          padding: 24px 20px 40px;
-        }
-
-        .profile-dropdown {
-          right: 0;
-          min-width: 200px;
-        }
-        
-        .menu-dropdown {
-          left: 0;
-          min-width: 140px;
-        }
+        .wrap { padding: 20px 16px 80px; }
+        header.masthead { flex-direction: row; align-items: flex-start; gap: 12px; }
+        .masthead-left { min-width: auto; flex: 1; gap: 12px; }
+        .masthead-left h1 { font-size: 1.6rem; }
+        .welcome-banner { padding: 14px 18px; margin-bottom: 28px; }
+        .welcome-text { font-size: 1rem; }
+        .welcome-text .welcome-name { font-size: 1.3rem; }
+        .welcome-text .welcome-quote { font-size: 0.75rem; }
+        .summary { grid-template-columns: repeat(2, 1fr); margin-bottom: 28px; }
+        .summary .cell { padding: 14px 16px; }
+        .summary .cell .num { font-size: 1.6rem; }
+        .add-row { flex-wrap: wrap; gap: 8px; }
+        .add-row input[type="text"], .add-row input[type="email"] { flex-basis: 100%; }
+        .add-row select { flex: 1; }
+        .add-row .btn { flex: 1; }
+        .tab { padding: 12px 6px; font-size: 0.75rem; }
+        .habit-row { display: flex; flex-direction: column; padding: 16px; gap: 14px; align-items: stretch; }
+        .habit-info { display: flex; width: 100%; justify-content: space-between; align-items: center; gap: 12px; }
+        .habit-name { flex: 1; min-width: 0; gap: 2px; }
+        .habit-name .title { font-size: 1.05rem; }
+        .habit-name .cadence { font-size: 0.7rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .streak-col { width: auto; font-size: 0.9rem; text-align: right; }
+        .habit-actions { width: auto; gap: 8px; }
+        .icon-btn { width: 28px; height: 28px; font-size: 0.9rem; }
+        .habit-week { width: 100%; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+        .day-group { flex-direction: column; gap: 6px; }
+        .day-label { display: block; font-family: var(--font-mono); font-size: 0.65rem; color: var(--paper-dim); text-transform: uppercase; text-align: center; }
+        .stamp { width: 100%; max-width: 36px; aspect-ratio: 1; margin: 0 auto; }
+        .modal-overlay { align-items: flex-end; padding: 0; }
+        .modal-box { width: 100%; max-width: 100%; border-radius: 8px 8px 0 0; border-left: none; border-right: none; border-bottom: none; padding: 24px 20px 40px; }
+        .profile-dropdown { right: 0; min-width: 200px; }
+        .menu-dropdown { left: 0; min-width: 140px; }
       }
 
       @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-        }
+        * { transition: none !important; }
       }
     </style>
   </head>
@@ -1570,29 +384,11 @@
         <h2>The Ledger</h2>
         <p id="authModeText">Login to continue</p>
         <div id="authError" class="auth-error"></div>
-        <input
-          type="email"
-          id="authEmail"
-          class="auth-input"
-          placeholder="Email Address"
-        />
-        <input
-          type="password"
-          id="authPass"
-          class="auth-input"
-          placeholder="Password"
-        />
+        <input type="email" id="authEmail" class="auth-input" placeholder="Email Address" />
+        <input type="password" id="authPass" class="auth-input" placeholder="Password" />
         <button id="authSubmitBtn" class="auth-btn">Login</button>
-        <div id="authToggle" class="auth-toggle">
-          Don't have an account? <b>Sign up</b>
-        </div>
-        <div
-          id="forgotPassLink"
-          class="auth-toggle"
-          style="margin-top: 15px; font-size: 0.8rem"
-        >
-          Forgot password? <b>Reset it</b>
-        </div>
+        <div id="authToggle" class="auth-toggle">Don't have an account? <b>Sign up</b></div>
+        <div id="forgotPassLink" class="auth-toggle" style="margin-top: 15px; font-size: 0.8rem">Forgot password? <b>Reset it</b></div>
       </div>
     </div>
 
@@ -1623,13 +419,7 @@
           
           <div class="profile-section">
             <div class="profile-wrapper">
-              <button
-                id="profileBtn"
-                class="profile-btn"
-                aria-label="Profile menu"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
+              <button id="profileBtn" class="profile-btn" aria-label="Profile menu" aria-haspopup="true" aria-expanded="false">
                 <div class="profile-avatar" id="profileAvatar">U</div>
                 <span class="profile-caret">▾</span>
               </button>
@@ -1638,35 +428,11 @@
                   <div class="dh-name" id="dropdownName">User</div>
                   <div class="dh-email" id="dropdownEmail">—</div>
                 </div>
-                <button
-                  class="dropdown-item"
-                  id="editNameOption"
-                  role="menuitem"
-                >
-                  <span class="dropdown-icon">✎</span>
-                  <span>Add / Edit Name</span>
-                </button>
-                <button
-                  class="dropdown-item"
-                  id="changePassOption"
-                  role="menuitem"
-                >
-                  <span class="dropdown-icon">🔒</span>
-                  <span>Change Password</span>
-                </button>
-                <button
-                  class="dropdown-item danger"
-                  id="deleteAccountOption"
-                  role="menuitem"
-                >
-                  <span class="dropdown-icon">⚠</span>
-                  <span>Delete Account</span>
-                </button>
+                <button class="dropdown-item" id="editNameOption" role="menuitem"><span class="dropdown-icon">✎</span><span>Add / Edit Name</span></button>
+                <button class="dropdown-item" id="changePassOption" role="menuitem"><span class="dropdown-icon">🔒</span><span>Change Password</span></button>
+                <button class="dropdown-item danger" id="deleteAccountOption" role="menuitem"><span class="dropdown-icon">⚠</span><span>Delete Account</span></button>
                 <div class="dropdown-divider"></div>
-                <button class="dropdown-item" id="logoutOption" role="menuitem">
-                  <span class="dropdown-icon">⏻</span>
-                  <span>Logout</span>
-                </button>
+                <button class="dropdown-item" id="logoutOption" role="menuitem"><span class="dropdown-icon">⏻</span><span>Logout</span></button>
               </div>
             </div>
           </div>
@@ -1677,33 +443,14 @@
           <div class="welcome-banner">
             <h2 id="welcomeMessage" class="welcome-text">Welcome back</h2>
           </div>
-
           <div class="summary">
-            <div class="cell">
-              <div class="num" id="statCompletedToday">0</div>
-              <div class="lbl">Completed Today</div>
-            </div>
-            <div class="cell">
-              <div class="num" id="statTotalToday">0</div>
-              <div class="lbl">Tasks Today</div>
-            </div>
-            <div class="cell">
-              <div class="num" id="statTodayPct">0%</div>
-              <div class="lbl">Today's Progress</div>
-            </div>
-            <div class="cell">
-              <div class="num" id="statStreak">0</div>
-              <div class="lbl">Longest streak (days)</div>
-            </div>
+            <div class="cell"><div class="num" id="statCompletedToday">0</div><div class="lbl">Completed Today</div></div>
+            <div class="cell"><div class="num" id="statTotalToday">0</div><div class="lbl">Tasks Today</div></div>
+            <div class="cell"><div class="num" id="statTodayPct">0%</div><div class="lbl">Today's Progress</div></div>
+            <div class="cell"><div class="num" id="statStreak">0</div><div class="lbl">Longest streak (days)</div></div>
           </div>
-
           <div class="add-row">
-            <input
-              type="text"
-              id="newHabitInput"
-              placeholder="Enter a habit to track — e.g. Read 20 pages"
-              maxlength="60"
-            />
+            <input type="text" id="newHabitInput" placeholder="Enter a habit to track — e.g. Read 20 pages" maxlength="60" />
             <select id="newHabitCadence">
               <option value="daily">Daily</option>
               <option value="weekly">Weekly</option>
@@ -1711,7 +458,6 @@
             </select>
             <button class="btn" id="addHabitBtn">Add to ledger</button>
           </div>
-
           <div class="freq-options" id="freqOptions" style="display: none">
             <div id="weeklyOptions" style="display: none">
               <span class="freq-lbl">Select days of the week</span>
@@ -1722,34 +468,11 @@
               <div class="picker-grid monthly-cols" id="monthlyDatePickers"></div>
             </div>
           </div>
-
           <div class="tabs" role="tablist">
-            <button
-              class="tab active"
-              id="tabRegisterBtn"
-              role="tab"
-              aria-selected="true"
-            >
-              This Week
-            </button>
-            <button
-              class="tab"
-              id="tabCalendarBtn"
-              role="tab"
-              aria-selected="false"
-            >
-              Calendar
-            </button>
-            <button
-              class="tab"
-              id="tabAnalyticsBtn"
-              role="tab"
-              aria-selected="false"
-            >
-              Analytics
-            </button>
+            <button class="tab active" id="tabRegisterBtn" role="tab" aria-selected="true">This Week</button>
+            <button class="tab" id="tabCalendarBtn" role="tab" aria-selected="false">Calendar</button>
+            <button class="tab" id="tabAnalyticsBtn" role="tab" aria-selected="false">Analytics</button>
           </div>
-
           <div id="registerView">
             <div class="register" id="registerBox">
               <div class="register-head" id="registerHeadRow"></div>
@@ -1760,111 +483,54 @@
               </div>
             </div>
           </div>
-
           <div id="calendarView" style="display: none">
             <div class="cal-panel">
               <div class="cal-head">
-                <button
-                  class="icon-btn cal-nav"
-                  id="calPrevBtn"
-                  aria-label="Previous month"
-                >
-                  ‹
-                </button>
+                <button class="icon-btn cal-nav" id="calPrevBtn" aria-label="Previous month">‹</button>
                 <div class="cal-month" id="calMonthLabel">—</div>
-                <button
-                  class="icon-btn cal-nav"
-                  id="calNextBtn"
-                  aria-label="Next month"
-                >
-                  ›
-                </button>
+                <button class="icon-btn cal-nav" id="calNextBtn" aria-label="Next month">›</button>
               </div>
               <div class="cal-dow-row" id="calDowRow"></div>
               <div class="cal-grid" id="calGrid"></div>
-
               <div class="dot-legend">
-                <div class="item">
-                  <span class="legend-dot ld-green"></span><span>All done</span>
-                </div>
-                <div class="item">
-                  <span class="legend-dot ld-yellow"></span><span>Partial</span>
-                </div>
-                <div class="item">
-                  <span class="legend-dot ld-red"></span><span>None done</span>
-                </div>
+                <div class="item"><span class="legend-dot ld-green"></span><span>All done</span></div>
+                <div class="item"><span class="legend-dot ld-yellow"></span><span>Partial</span></div>
+                <div class="item"><span class="legend-dot ld-red"></span><span>None done</span></div>
               </div>
             </div>
-
             <div class="day-panel" id="dayPanel" style="display: none">
               <div class="day-panel-head">
                 <div class="day-panel-title" id="dayPanelTitle">—</div>
-                <button class="icon-btn" id="dayPanelClose" aria-label="Close">
-                  ✕
-                </button>
+                <button class="icon-btn" id="dayPanelClose" aria-label="Close">✕</button>
               </div>
               <div id="dayPanelBody"></div>
             </div>
           </div>
-
           <div id="analyticsView" style="display: none">
             <div class="analytics-grid">
-              <div class="cell">
-                <div class="num" id="anaRate">0%</div>
-                <div class="lbl">Overall Completion</div>
-              </div>
-              <div class="cell">
-                <div class="num" id="anaTotal">0</div>
-                <div class="lbl">Total Completions</div>
-              </div>
-              <div class="cell">
-                <div class="num" id="anaAvg">0</div>
-                <div class="lbl">Avg / Day (Active)</div>
-              </div>
-              <div class="cell">
-                <div class="num" id="anaActive">0</div>
-                <div class="lbl">Active Habits</div>
-              </div>
+              <div class="cell"><div class="num" id="anaRate">0%</div><div class="lbl">Overall Completion</div></div>
+              <div class="cell"><div class="num" id="anaTotal">0</div><div class="lbl">Total Completions</div></div>
+              <div class="cell"><div class="num" id="anaAvg">0</div><div class="lbl">Avg / Day (Active)</div></div>
+              <div class="cell"><div class="num" id="anaActive">0</div><div class="lbl">Active Habits</div></div>
             </div>
-
             <div class="chart-row">
               <div class="analytics-card full-width">
                 <h3>14-Day Momentum</h3>
                 <div class="chart-wrap"><canvas id="momentumChart"></canvas></div>
               </div>
             </div>
-
             <div class="chart-row">
-              <div class="analytics-card">
-                <h3>Day of Week Performance</h3>
-                <div class="chart-wrap"><canvas id="dowChart"></canvas></div>
-              </div>
-              <div class="analytics-card">
-                <h3>8-Week Trend</h3>
-                <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
-              </div>
+              <div class="analytics-card"><h3>Day of Week Performance</h3><div class="chart-wrap"><canvas id="dowChart"></canvas></div></div>
+              <div class="analytics-card"><h3>8-Week Trend</h3><div class="chart-wrap"><canvas id="trendChart"></canvas></div></div>
             </div>
-
             <div class="chart-row">
-              <div class="analytics-card full-width">
-                <h3>12-Month Overview</h3>
-                <div class="chart-wrap"><canvas id="monthlyChart"></canvas></div>
-              </div>
+              <div class="analytics-card full-width"><h3>12-Month Overview</h3><div class="chart-wrap"><canvas id="monthlyChart"></canvas></div></div>
             </div>
-
             <div class="analytics-card">
               <h3>Habit Breakdown</h3>
               <div class="table-wrap">
                 <table class="breakdown-table" id="breakdownTable">
-                  <thead>
-                    <tr>
-                      <th>Habit</th>
-                      <th>Cadence</th>
-                      <th>Completion</th>
-                      <th>Curr. Streak</th>
-                      <th>Best Streak</th>
-                    </tr>
-                  </thead>
+                  <thead><tr><th>Habit</th><th>Cadence</th><th>Completion</th><th>Curr. Streak</th><th>Best Streak</th></tr></thead>
                   <tbody id="breakdownBody"></tbody>
                 </table>
               </div>
@@ -1882,34 +548,23 @@
                 <button class="btn" id="sendRequestBtn">Send Request</button>
               </div>
             </div>
-
             <div class="friends-card">
               <h3>Pending Requests</h3>
-              <div id="friendRequestsList">
-                <div class="empty-text">No pending requests.</div>
-              </div>
+              <div id="friendRequestsList"><div class="empty-text">No pending requests.</div></div>
             </div>
-
             <div class="friends-card">
               <h3>Your Friends</h3>
-              <div id="friendsList">
-                <div class="empty-text">You haven't added any friends yet.</div>
-              </div>
+              <div id="friendsList"><div class="empty-text">You haven't added any friends yet.</div></div>
             </div>
-
             <div class="friends-card comparison-box" id="comparisonBox" style="display: none;">
               <h3 id="comparisonTitle">Comparison</h3>
-              <div class="chart-wrap" style="height: 300px;">
-                <canvas id="comparisonChart"></canvas>
-              </div>
+              <div class="chart-wrap" style="height: 300px;"><canvas id="comparisonChart"></canvas></div>
               <div id="friendHabitsList" style="margin-top: 20px;"></div>
             </div>
           </div>
         </div>
 
-        <footer class="note">
-          Entries are stored securely in the cloud via Firebase.
-        </footer>
+        <footer class="note">Entries are stored securely in the cloud via Firebase.</footer>
       </div>
     </div>
 
@@ -1917,45 +572,22 @@
     <div class="modal-overlay" id="editOverlay">
       <div class="modal-box">
         <h3>Edit Habit</h3>
-        <input
-          type="text"
-          id="editNameInput"
-          class="modal-input"
-          placeholder="Habit Name"
-        />
+        <input type="text" id="editNameInput" class="modal-input" placeholder="Habit Name" />
         <select id="editCadenceSelect" class="modal-input">
           <option value="daily">Daily</option>
           <option value="weekly">Weekly</option>
           <option value="monthly">Monthly</option>
         </select>
-
-        <div
-          class="freq-options"
-          id="editFreqOptions"
-          style="
-            display: none;
-            background: var(--bg);
-            margin-bottom: 0;
-            box-shadow: none;
-            border-color: var(--line);
-          "
-        >
+        <div class="freq-options" id="editFreqOptions" style="display: none; background: var(--bg); margin-bottom: 0; box-shadow: none; border-color: var(--line);">
           <div id="editWeeklyOptions" style="display: none">
             <span class="freq-lbl">Select days of the week</span>
-            <div
-              class="picker-grid weekly-cols"
-              id="editWeeklyDayPickers"
-            ></div>
+            <div class="picker-grid weekly-cols" id="editWeeklyDayPickers"></div>
           </div>
           <div id="editMonthlyOptions" style="display: none">
             <span class="freq-lbl">Select days of the month</span>
-            <div
-              class="picker-grid monthly-cols"
-              id="editMonthlyDatePickers"
-            ></div>
+            <div class="picker-grid monthly-cols" id="editMonthlyDatePickers"></div>
           </div>
         </div>
-
         <div class="modal-actions">
           <button class="btn-ghost" id="cancelEditBtn">Cancel</button>
           <button class="btn" id="saveEditBtn">Save Changes</button>
@@ -1967,18 +599,8 @@
     <div class="modal-overlay" id="editNameOverlay">
       <div class="modal-box">
         <h3>Your Name</h3>
-        <p
-          style="font-size: 0.85rem; color: var(--paper-dim); margin: -10px 0 20px 0; line-height: 1.5;"
-        >
-          This name will be used to greet you on your dashboard and for friend requests.
-        </p>
-        <input
-          type="text"
-          id="editNameInputField"
-          class="modal-input"
-          placeholder="Enter your name"
-          maxlength="40"
-        />
+        <p style="font-size: 0.85rem; color: var(--paper-dim); margin: -10px 0 20px 0; line-height: 1.5;">This name will be used to greet you on your dashboard and for friend requests.</p>
+        <input type="text" id="editNameInputField" class="modal-input" placeholder="Enter your name" maxlength="40" />
         <div class="modal-actions">
           <button class="btn-ghost" id="cancelEditNameBtn">Cancel</button>
           <button class="btn" id="saveNameBtn">Save Name</button>
@@ -1990,9 +612,7 @@
     <div class="modal-overlay" id="changePassOverlay">
       <div class="modal-box">
         <h3>Change Password</h3>
-        <p style="font-size: 0.85rem; color: var(--paper-dim); margin: -10px 0 20px 0; line-height: 1.5;">
-          For your security, please enter your current password.
-        </p>
+        <p style="font-size: 0.85rem; color: var(--paper-dim); margin: -10px 0 20px 0; line-height: 1.5;">For your security, please enter your current password.</p>
         <input type="password" id="currentPassInput" class="modal-input" placeholder="Current password" />
         <input type="password" id="newPassInput" class="modal-input" placeholder="New password (min 6 characters)" />
         <input type="password" id="confirmPassInput" class="modal-input" placeholder="Confirm new password" />
@@ -2008,9 +628,7 @@
     <div class="modal-overlay" id="deleteAccountOverlay">
       <div class="modal-box" style="border-color: var(--danger)">
         <h3 style="color: var(--danger)">Delete Account</h3>
-        <p style="font-size: 0.88rem; color: var(--paper-dim); margin: -10px 0 20px 0; line-height: 1.5;">
-          This action is <b style="color: var(--danger)">permanent and irreversible</b>. All your habits, logs, and account data will be permanently deleted.
-        </p>
+        <p style="font-size: 0.88rem; color: var(--paper-dim); margin: -10px 0 20px 0; line-height: 1.5;">This action is <b style="color: var(--danger)">permanent and irreversible</b>. All your habits, logs, and account data will be permanently deleted.</p>
         <input type="password" id="deletePassInput" class="modal-input" placeholder="Enter your password to confirm" />
         <div id="deleteAccountError" class="auth-error" style="margin-top: -5px"></div>
         <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--paper); margin: 12px 0; cursor: pointer;">
@@ -2030,35 +648,13 @@
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
       import {
-        getAuth,
-        signInWithEmailAndPassword,
-        createUserWithEmailAndPassword,
-        signOut,
-        onAuthStateChanged,
-        sendPasswordResetEmail,
-        updatePassword,
-        deleteUser,
-        reauthenticateWithCredential,
-        EmailAuthProvider,
+        getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged,
+        sendPasswordResetEmail, updatePassword, deleteUser, reauthenticateWithCredential, EmailAuthProvider,
       } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
       import {
-        getFirestore,
-        collection,
-        doc,
-        getDocs,
-        getDoc,
-        addDoc,
-        updateDoc,
-        deleteDoc,
-        setDoc,
-        onSnapshot,
-        query,
-        where,
+        getFirestore, collection, doc, getDocs, getDoc, addDoc, updateDoc, deleteDoc, setDoc, onSnapshot, query, where,
       } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-      // ==========================================
-      // FIREBASE CONFIGURATION
-      // ==========================================
       const firebaseConfig = {
         apiKey: "AIzaSyArxlflQuP2x_nlNMUre8UX87q4hzoMicw",
         authDomain: "the-ledger-29m04.firebaseapp.com",
@@ -2083,13 +679,8 @@
       let currentQuote = "";
       let comparisonChart = null;
 
-      // ==========================================
-      // GLOBAL STATE
-      // ==========================================
       const DOW_LABELS = ["S", "M", "T", "W", "T", "F", "S"];
-      const FULL_DOW_LABELS = [
-        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
-      ];
+      const FULL_DOW_LABELS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
       let habits = [];
 
       const weekStart = startOfWeek(new Date());
@@ -2099,23 +690,15 @@
       const yesterday = yesterdayISO();
       const todayIdx = weekISO.indexOf(today);
 
-      // ==========================================
-      // TOAST UTILITY
-      // ==========================================
       const toastEl = document.getElementById("toast");
       let toastTimer = null;
       function showToast(message, type = "") {
         clearTimeout(toastTimer);
         toastEl.textContent = message;
         toastEl.className = "toast show " + type;
-        toastTimer = setTimeout(() => {
-          toastEl.classList.remove("show");
-        }, 3000);
+        toastTimer = setTimeout(() => toastEl.classList.remove("show"), 3000);
       }
 
-      // ==========================================
-      // AUTHENTICATION LOGIC
-      // ==========================================
       const authOverlay = document.getElementById("authOverlay");
       const appContainer = document.getElementById("appContainer");
       const authSubmitBtn = document.getElementById("authSubmitBtn");
@@ -2132,9 +715,7 @@
         isLoginMode = !isLoginMode;
         authModeText.textContent = isLoginMode ? "Login to continue" : "Create an account";
         authSubmitBtn.textContent = isLoginMode ? "Login" : "Sign Up";
-        authToggle.innerHTML = isLoginMode
-          ? "Don't have an account? <b>Sign up</b>"
-          : "Already have an account? <b>Login</b>";
+        authToggle.innerHTML = isLoginMode ? "Don't have an account? <b>Sign up</b>" : "Already have an account? <b>Login</b>";
         authError.style.display = "none";
         forgotPassLink.style.display = isLoginMode ? "block" : "none";
       });
@@ -2147,7 +728,6 @@
           authError.style.display = "block";
           return;
         }
-
         try {
           await sendPasswordResetEmail(auth, email);
           authError.textContent = "Password reset email sent! Check your inbox.";
@@ -2169,7 +749,6 @@
           authError.style.display = "block";
           return;
         }
-
         try {
           if (isLoginMode) {
             await signInWithEmailAndPassword(auth, email, pass);
@@ -2210,9 +789,6 @@
         }
       });
 
-      // ==========================================
-      // PROFILE MANAGEMENT
-      // ==========================================
       const profileBtn = document.getElementById("profileBtn");
       const profileDropdown = document.getElementById("profileDropdown");
       const profileAvatar = document.getElementById("profileAvatar");
@@ -2240,12 +816,9 @@
 
       function initProfileListener() {
         const userDocRef = doc(db, "users", currentUser.uid);
-        unsubscribeProfile = onSnapshot(
-          userDocRef,
-          async (docSnap) => {
+        unsubscribeProfile = onSnapshot(userDocRef, async (docSnap) => {
             if (docSnap.exists()) {
               userProfile = docSnap.data() || {};
-              // Ensure email is saved (needed for friends search)
               if (!userProfile.email && currentUser.email) {
                 await setDoc(userDocRef, { email: currentUser.email }, { merge: true });
                 userProfile.email = currentUser.email;
@@ -2259,17 +832,10 @@
               }
             }
             updateProfileUI();
-          },
-          (error) => {
-            console.error("Error fetching profile: ", error);
-          }
-        );
+          }, (error) => console.error("Error fetching profile: ", error));
       }
 
-      function getDisplayName() {
-        return userProfile.name && userProfile.name.trim() ? userProfile.name.trim() : "";
-      }
-
+      function getDisplayName() { return userProfile.name && userProfile.name.trim() ? userProfile.name.trim() : ""; }
       function getInitial() {
         const name = getDisplayName();
         if (name) return name.charAt(0).toUpperCase();
@@ -2280,17 +846,14 @@
       function updateProfileUI() {
         const name = getDisplayName();
         const email = currentUser ? currentUser.email : "";
-
         profileAvatar.textContent = getInitial();
         dropdownName.textContent = name || "Welcome";
         dropdownEmail.textContent = email;
-
         if (needsNewQuote) {
           const randomIndex = Math.floor(Math.random() * motivationalQuotes.length);
           currentQuote = motivationalQuotes[randomIndex];
           needsNewQuote = false;
         }
-
         const displayName = name || "Traveler";
         welcomeMessage.innerHTML = `Welcome, <span class="welcome-name">${displayName}</span>. <span class="welcome-quote">"${currentQuote}"</span>`;
       }
@@ -2300,7 +863,6 @@
         const isActive = profileDropdown.classList.toggle("active");
         profileBtn.classList.toggle("open", isActive);
         profileBtn.setAttribute("aria-expanded", isActive ? "true" : "false");
-        // Close menu if open
         document.getElementById("menuDropdown").classList.remove("active");
       });
 
@@ -2323,9 +885,6 @@
         }
       });
 
-      // ==========================================
-      // MENU NAVIGATION (Me / Friends)
-      // ==========================================
       const menuBtn = document.getElementById("menuBtn");
       const menuDropdown = document.getElementById("menuDropdown");
       const meViewBtn = document.getElementById("meViewBtn");
@@ -2355,7 +914,7 @@
       });
 
       // ==========================================
-      // FRIENDS LOGIC
+      // FRIENDS LOGIC (WITH ERROR HANDLING)
       // ==========================================
       const friendEmailInput = document.getElementById("friendEmailInput");
       const sendRequestBtn = document.getElementById("sendRequestBtn");
@@ -2367,23 +926,13 @@
         if (!email) return showToast("Please enter an email.", "error");
 
         try {
-          // Query users collection by email
           const q = query(collection(db, "users"), where("email", "==", email));
           const snapshot = await getDocs(q);
-          
-          if (snapshot.empty) {
-            showToast("No user found with that email.", "error");
-            return;
-          }
+          if (snapshot.empty) return showToast("No user found with that email.", "error");
 
           const friendUid = snapshot.docs[0].id;
-          
-          if (friendUid === currentUser.uid) {
-            showToast("You can't send a request to yourself!", "error");
-            return;
-          }
+          if (friendUid === currentUser.uid) return showToast("You can't send a request to yourself!", "error");
 
-          // Send request to their friendRequests subcollection
           await setDoc(doc(db, "users", friendUid, "friendRequests", currentUser.uid), {
             from: currentUser.uid,
             fromEmail: currentUser.email,
@@ -2399,7 +948,6 @@
       });
 
       function initFriendsListeners() {
-        // Listen for incoming requests
         const reqCol = collection(db, "users", currentUser.uid, "friendRequests");
         unsubscribeFriendRequests = onSnapshot(reqCol, (snap) => {
           friendRequestsList.innerHTML = "";
@@ -2408,8 +956,8 @@
             return;
           }
           
-          snap.forEach((doc) => {
-            const req = doc.data();
+          snap.forEach((docSnap) => {
+            const req = docSnap.data();
             const item = document.createElement("div");
             item.className = "friend-req-item";
             item.innerHTML = `
@@ -2423,33 +971,45 @@
               </div>
             `;
 
+            // Added try/catch for Accept button
             item.querySelector(".accept-btn").addEventListener("click", async () => {
-              // Add to both friends lists
-              await setDoc(doc(db, "users", currentUser.uid, "friends", req.from), {
-                name: req.fromName,
-                email: req.fromEmail,
-                addedAt: Date.now()
-              });
-              await setDoc(doc(db, "users", req.from, "friends", currentUser.uid), {
-                name: getDisplayName() || currentUser.email,
-                email: currentUser.email,
-                addedAt: Date.now()
-              });
-              // Delete request
-              await deleteDoc(doc(db, "users", currentUser.uid, "friendRequests", req.from));
-              showToast("Friend added!", "success");
+              try {
+                // Add to my friends list
+                await setDoc(doc(db, "users", currentUser.uid, "friends", req.from), {
+                  name: req.fromName,
+                  email: req.fromEmail,
+                  addedAt: Date.now()
+                });
+                // Add to their friends list
+                await setDoc(doc(db, "users", req.from, "friends", currentUser.uid), {
+                  name: getDisplayName() || currentUser.email,
+                  email: currentUser.email,
+                  addedAt: Date.now()
+                });
+                // Delete the request
+                await deleteDoc(doc(db, "users", currentUser.uid, "friendRequests", req.from));
+                showToast("Friend added!", "success");
+              } catch (error) {
+                console.error("Accept error:", error);
+                showToast("Failed to accept: " + error.message, "error");
+              }
             });
 
+            // Added try/catch for Reject button
             item.querySelector(".reject-btn").addEventListener("click", async () => {
-              await deleteDoc(doc(db, "users", currentUser.uid, "friendRequests", req.from));
-              showToast("Request rejected.", "success");
+              try {
+                await deleteDoc(doc(db, "users", currentUser.uid, "friendRequests", req.from));
+                showToast("Request rejected.", "success");
+              } catch (error) {
+                console.error("Reject error:", error);
+                showToast("Failed to reject: " + error.message, "error");
+              }
             });
 
             friendRequestsList.appendChild(item);
           });
         });
 
-        // Listen for friends list
         const friendsCol = collection(db, "users", currentUser.uid, "friends");
         unsubscribeFriends = onSnapshot(friendsCol, (snap) => {
           friendsList.innerHTML = "";
@@ -2472,11 +1032,7 @@
                 <button class="btn btn-small compare-btn">Compare</button>
               </div>
             `;
-
-            item.querySelector(".compare-btn").addEventListener("click", () => {
-              loadFriendComparison(friendUid, friend.name);
-            });
-
+            item.querySelector(".compare-btn").addEventListener("click", () => loadFriendComparison(friendUid, friend.name));
             friendsList.appendChild(item);
           });
         });
@@ -2491,80 +1047,52 @@
         comparisonBox.style.display = "block";
         comparisonBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-        // Fetch friend's habits
-        const friendHabitsCol = collection(db, "users", friendUid, "habits");
-        const snap = await getDocs(friendHabitsCol);
-        const fHabits = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        try {
+          const friendHabitsCol = collection(db, "users", friendUid, "habits");
+          const snap = await getDocs(friendHabitsCol);
+          const fHabits = snap.docs.map(d => ({ id: d.id, ...d.data() }));
 
-        // Calculate 14-day completion data for friend and current user
-        const fData = calc14DayCompletion(fHabits);
-        const uData = calc14DayCompletion(habits);
+          const fData = calc14DayCompletion(fHabits);
+          const uData = calc14DayCompletion(habits);
 
-        const ctx = document.getElementById("comparisonChart").getContext("2d");
-        if (comparisonChart) comparisonChart.destroy();
+          const ctx = document.getElementById("comparisonChart").getContext("2d");
+          if (comparisonChart) comparisonChart.destroy();
 
-        const labels = Array.from({ length: 14 }, (_, i) => {
-          const d = new Date();
-          d.setDate(d.getDate() - (13 - i));
-          return d.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
-        });
-
-        comparisonChart = new Chart(ctx, {
-          type: "line",
-          data: {
-            labels: labels,
-            datasets: [
-              {
-                label: "You (%)",
-                data: uData,
-                borderColor: "#2A9D8F",
-                backgroundColor: "rgba(42, 157, 143, 0.1)",
-                fill: true,
-                tension: 0.3,
-                borderWidth: 2,
-              },
-              {
-                label: `${friendName} (%)`,
-                data: fData,
-                borderColor: "#E76F51",
-                backgroundColor: "rgba(231, 111, 81, 0.1)",
-                fill: true,
-                tension: 0.3,
-                borderWidth: 2,
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { position: "top" } },
-            scales: {
-              y: {
-                beginAtZero: true,
-                max: 100,
-                ticks: { callback: (v) => v + "%" }
-              }
-            }
-          }
-        });
-
-        // Render Friend's habits list
-        friendHabitsList.innerHTML = "<h4 style='font-family:var(--font-sub); margin-bottom:10px; color:var(--paper);'>Friend's Trackers</h4>";
-        if (fHabits.length === 0) {
-          friendHabitsList.innerHTML += '<div class="empty-text">No habits to display.</div>';
-        } else {
-          fHabits.forEach(h => {
-            const row = document.createElement("div");
-            row.style.display = "flex";
-            row.style.justifyContent = "space-between";
-            row.style.padding = "8px 0";
-            row.style.borderBottom = "1px dashed var(--line)";
-            row.innerHTML = `
-              <span style="font-weight:600; color:var(--paper);">${h.name}</span>
-              <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--teal);">${getCadenceShort(h).toUpperCase()}</span>
-            `;
-            friendHabitsList.appendChild(row);
+          const labels = Array.from({ length: 14 }, (_, i) => {
+            const d = new Date();
+            d.setDate(d.getDate() - (13 - i));
+            return d.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
           });
+
+          comparisonChart = new Chart(ctx, {
+            type: "line",
+            data: {
+              labels: labels,
+              datasets: [
+                { label: "You (%)", data: uData, borderColor: "#2A9D8F", backgroundColor: "rgba(42, 157, 143, 0.1)", fill: true, tension: 0.3, borderWidth: 2 },
+                { label: `${friendName} (%)`, data: fData, borderColor: "#E76F51", backgroundColor: "rgba(231, 111, 81, 0.1)", fill: true, tension: 0.3, borderWidth: 2 }
+              ]
+            },
+            options: {
+              responsive: true, maintainAspectRatio: false,
+              plugins: { legend: { position: "top" } },
+              scales: { y: { beginAtZero: true, max: 100, ticks: { callback: (v) => v + "%" } } }
+            }
+          });
+
+          friendHabitsList.innerHTML = "<h4 style='font-family:var(--font-sub); margin-bottom:10px; color:var(--paper);'>Friend's Trackers</h4>";
+          if (fHabits.length === 0) {
+            friendHabitsList.innerHTML += '<div class="empty-text">No habits to display.</div>';
+          } else {
+            fHabits.forEach(h => {
+              const row = document.createElement("div");
+              row.style.display = "flex"; row.style.justifyContent = "space-between"; row.style.padding = "8px 0"; row.style.borderBottom = "1px dashed var(--line)";
+              row.innerHTML = `<span style="font-weight:600; color:var(--paper);">${h.name}</span><span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--teal);">${getCadenceShort(h).toUpperCase()}</span>`;
+              friendHabitsList.appendChild(row);
+            });
+          }
+        } catch (error) {
+          showToast("Failed to load comparison: " + error.message, "error");
         }
       }
 
@@ -2572,26 +1100,18 @@
         const data = [];
         const todayObj = new Date();
         todayObj.setHours(0, 0, 0, 0);
-
         for (let i = 13; i >= 0; i--) {
           const d = new Date(todayObj);
           d.setDate(todayObj.getDate() - i);
           const key = isoDate(d);
-
           const applicable = habitsArr.filter((h) => isApplicableDay(d, h)).length;
-          const done = habitsArr.filter(
-            (h) => isApplicableDay(d, h) && h.log && h.log[key]
-          ).length;
-          
+          const done = habitsArr.filter((h) => isApplicableDay(d, h) && h.log && h.log[key]).length;
           const pct = applicable > 0 ? Math.round((done / applicable) * 100) : 0;
           data.push(pct);
         }
         return data;
       }
 
-      // ==========================================
-      // EDIT NAME
-      // ==========================================
       const editNameOverlay = document.getElementById("editNameOverlay");
       const editNameInputField = document.getElementById("editNameInputField");
       const saveNameBtn = document.getElementById("saveNameBtn");
@@ -2605,54 +1125,31 @@
 
       function openEditNameModal(isNewUser) {
         editNameInputField.value = getDisplayName();
-        if (isNewUser) {
-          editNameInputField.placeholder = "What should we call you?";
-        }
+        if (isNewUser) editNameInputField.placeholder = "What should we call you?";
         editNameOverlay.classList.add("active");
-        setTimeout(() => {
-          editNameInputField.focus();
-          editNameInputField.select();
-        }, 50);
+        setTimeout(() => { editNameInputField.focus(); editNameInputField.select(); }, 50);
       }
 
-      cancelEditNameBtn.addEventListener("click", () => {
-        editNameOverlay.classList.remove("active");
-      });
-
-      editNameInputField.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") saveNameBtn.click();
-      });
+      cancelEditNameBtn.addEventListener("click", () => editNameOverlay.classList.remove("active"));
+      editNameInputField.addEventListener("keydown", (e) => { if (e.key === "Enter") saveNameBtn.click(); });
 
       saveNameBtn.addEventListener("click", async () => {
         const newName = editNameInputField.value.trim();
-        if (!newName) {
-          editNameInputField.focus();
-          return;
-        }
-        if (newName.length > 40) {
-          showToast("Name is too long (max 40 characters).", "error");
-          return;
-        }
-
+        if (!newName) return editNameInputField.focus();
+        if (newName.length > 40) return showToast("Name is too long (max 40 characters).", "error");
         try {
-          saveNameBtn.disabled = true;
-          saveNameBtn.textContent = "Saving...";
+          saveNameBtn.disabled = true; saveNameBtn.textContent = "Saving...";
           const userDocRef = doc(db, "users", currentUser.uid);
-          // Save name AND email to ensure user is searchable by email for friends
           await setDoc(userDocRef, { name: newName, email: currentUser.email }, { merge: true });
           editNameOverlay.classList.remove("active");
           showToast("Name updated successfully.", "success");
         } catch (error) {
           showToast("Failed to update name: " + error.message.replace("Firebase: ", ""), "error");
         } finally {
-          saveNameBtn.disabled = false;
-          saveNameBtn.textContent = "Save Name";
+          saveNameBtn.disabled = false; saveNameBtn.textContent = "Save Name";
         }
       });
 
-      // ==========================================
-      // CHANGE PASSWORD
-      // ==========================================
       const changePassOverlay = document.getElementById("changePassOverlay");
       const currentPassInput = document.getElementById("currentPassInput");
       const newPassInput = document.getElementById("newPassInput");
@@ -2664,47 +1161,29 @@
       document.getElementById("changePassOption").addEventListener("click", () => {
         profileDropdown.classList.remove("active");
         profileBtn.classList.remove("open");
-        currentPassInput.value = "";
-        newPassInput.value = "";
-        confirmPassInput.value = "";
+        currentPassInput.value = ""; newPassInput.value = ""; confirmPassInput.value = "";
         passChangeError.style.display = "none";
         changePassOverlay.classList.add("active");
         setTimeout(() => currentPassInput.focus(), 50);
       });
 
-      cancelChangePassBtn.addEventListener("click", () => {
-        changePassOverlay.classList.remove("active");
-      });
+      cancelChangePassBtn.addEventListener("click", () => changePassOverlay.classList.remove("active"));
 
       function showPassError(msg) {
-        passChangeError.textContent = msg;
-        passChangeError.style.color = "var(--danger)";
-        passChangeError.style.display = "block";
+        passChangeError.textContent = msg; passChangeError.style.color = "var(--danger)"; passChangeError.style.display = "block";
       }
 
       savePassBtn.addEventListener("click", async () => {
         const curPass = currentPassInput.value;
         const newPass = newPassInput.value;
         const confPass = confirmPassInput.value;
-
         passChangeError.style.display = "none";
-
-        if (!curPass || !newPass || !confPass) {
-          return showPassError("All fields are required.");
-        }
-        if (newPass.length < 6) {
-          return showPassError("New password must be at least 6 characters.");
-        }
-        if (newPass !== confPass) {
-          return showPassError("New passwords do not match.");
-        }
-        if (newPass === curPass) {
-          return showPassError("New password must be different from current password.");
-        }
-
+        if (!curPass || !newPass || !confPass) return showPassError("All fields are required.");
+        if (newPass.length < 6) return showPassError("New password must be at least 6 characters.");
+        if (newPass !== confPass) return showPassError("New passwords do not match.");
+        if (newPass === curPass) return showPassError("New password must be different from current password.");
         try {
-          savePassBtn.disabled = true;
-          savePassBtn.textContent = "Updating...";
+          savePassBtn.disabled = true; savePassBtn.textContent = "Updating...";
           const credential = EmailAuthProvider.credential(currentUser.email, curPass);
           await reauthenticateWithCredential(currentUser, credential);
           await updatePassword(currentUser, newPass);
@@ -2712,21 +1191,14 @@
           showToast("Password updated successfully.", "success");
         } catch (error) {
           let msg = error.message.replace("Firebase: ", "");
-          if (error.code === "auth/wrong-password" || error.code === "auth/invalid-credential") {
-            msg = "Current password is incorrect.";
-          } else if (error.code === "auth/too-many-requests") {
-            msg = "Too many attempts. Please try again later.";
-          }
+          if (error.code === "auth/wrong-password" || error.code === "auth/invalid-credential") msg = "Current password is incorrect.";
+          else if (error.code === "auth/too-many-requests") msg = "Too many attempts. Please try again later.";
           showPassError(msg);
         } finally {
-          savePassBtn.disabled = false;
-          savePassBtn.textContent = "Update Password";
+          savePassBtn.disabled = false; savePassBtn.textContent = "Update Password";
         }
       });
 
-      // ==========================================
-      // DELETE ACCOUNT
-      // ==========================================
       const deleteAccountOverlay = document.getElementById("deleteAccountOverlay");
       const deletePassInput = document.getElementById("deletePassInput");
       const deleteConfirmCheck = document.getElementById("deleteConfirmCheck");
@@ -2735,86 +1207,46 @@
       const deleteAccountError = document.getElementById("deleteAccountError");
 
       document.getElementById("deleteAccountOption").addEventListener("click", () => {
-        profileDropdown.classList.remove("active");
-        profileBtn.classList.remove("open");
-        deletePassInput.value = "";
-        deleteConfirmCheck.checked = false;
-        confirmDeleteBtn.disabled = true;
-        deleteAccountError.style.display = "none";
-        deleteAccountOverlay.classList.add("active");
+        profileDropdown.classList.remove("active"); profileBtn.classList.remove("open");
+        deletePassInput.value = ""; deleteConfirmCheck.checked = false; confirmDeleteBtn.disabled = true;
+        deleteAccountError.style.display = "none"; deleteAccountOverlay.classList.add("active");
         setTimeout(() => deletePassInput.focus(), 50);
       });
 
-      deleteConfirmCheck.addEventListener("change", () => {
-        confirmDeleteBtn.disabled = !deleteConfirmCheck.checked;
-      });
-
-      cancelDeleteAccountBtn.addEventListener("click", () => {
-        deleteAccountOverlay.classList.remove("active");
-      });
+      deleteConfirmCheck.addEventListener("change", () => confirmDeleteBtn.disabled = !deleteConfirmCheck.checked);
+      cancelDeleteAccountBtn.addEventListener("click", () => deleteAccountOverlay.classList.remove("active"));
 
       confirmDeleteBtn.addEventListener("click", async () => {
         const pass = deletePassInput.value;
         deleteAccountError.style.display = "none";
-
-        if (!pass) {
-          deleteAccountError.textContent = "Please enter your password.";
-          deleteAccountError.style.display = "block";
-          return;
-        }
-        if (!deleteConfirmCheck.checked) {
-          deleteAccountError.textContent = "Please confirm you understand this action.";
-          deleteAccountError.style.display = "block";
-          return;
-        }
-
+        if (!pass) { deleteAccountError.textContent = "Please enter your password."; deleteAccountError.style.display = "block"; return; }
+        if (!deleteConfirmCheck.checked) { deleteAccountError.textContent = "Please confirm you understand this action."; deleteAccountError.style.display = "block"; return; }
         try {
-          confirmDeleteBtn.disabled = true;
-          confirmDeleteBtn.textContent = "Deleting...";
+          confirmDeleteBtn.disabled = true; confirmDeleteBtn.textContent = "Deleting...";
           const credential = EmailAuthProvider.credential(currentUser.email, pass);
           await reauthenticateWithCredential(currentUser, credential);
-
           const habitsCol = collection(db, "users", currentUser.uid, "habits");
           const snapshot = await getDocs(habitsCol);
           const deletePromises = snapshot.docs.map((d) => deleteDoc(d.ref));
           await Promise.all(deletePromises);
-
-          try {
-            await deleteDoc(doc(db, "users", currentUser.uid));
-          } catch (e) {
-            // Ignore if doc doesn't exist
-          }
-
+          try { await deleteDoc(doc(db, "users", currentUser.uid)); } catch (e) {}
           await deleteUser(currentUser);
           deleteAccountOverlay.classList.remove("active");
           showToast("Account deleted successfully.", "success");
         } catch (error) {
           let msg = error.message.replace("Firebase: ", "");
-          if (error.code === "auth/wrong-password" || error.code === "auth/invalid-credential") {
-            msg = "Password is incorrect.";
-          } else if (error.code === "auth/requires-recent-login") {
-            msg = "Please log out and log back in, then try again.";
-          }
-          deleteAccountError.textContent = msg;
-          deleteAccountError.style.display = "block";
+          if (error.code === "auth/wrong-password" || error.code === "auth/invalid-credential") msg = "Password is incorrect.";
+          else if (error.code === "auth/requires-recent-login") msg = "Please log out and log back in, then try again.";
+          deleteAccountError.textContent = msg; deleteAccountError.style.display = "block";
         } finally {
-          confirmDeleteBtn.disabled = false;
-          confirmDeleteBtn.textContent = "Delete Account";
+          confirmDeleteBtn.disabled = false; confirmDeleteBtn.textContent = "Delete Account";
         }
       });
 
-      // ==========================================
-      // LOGOUT
-      // ==========================================
       document.getElementById("logoutOption").addEventListener("click", () => {
-        profileDropdown.classList.remove("active");
-        profileBtn.classList.remove("open");
-        signOut(auth);
+        profileDropdown.classList.remove("active"); profileBtn.classList.remove("open"); signOut(auth);
       });
 
-      // ==========================================
-      // FIRESTORE DATABASE SYNC
-      // ==========================================
       function initHabitListener() {
         const habitsCol = collection(db, "users", currentUser.uid, "habits");
         unsubscribeHabits = onSnapshot(habitsCol, (snapshot) => {
@@ -2827,55 +1259,28 @@
         const habitsCol = collection(db, "users", currentUser.uid, "habits");
         await addDoc(habitsCol, { name, cadence, days: selectedDays, log: {} });
       }
-
       async function updateHabitInDb(habitId, data) {
         const habitRef = doc(db, "users", currentUser.uid, "habits", habitId);
         await updateDoc(habitRef, data);
       }
-
       async function deleteHabitFromDb(habitId) {
         const habitRef = doc(db, "users", currentUser.uid, "habits", habitId);
         await deleteDoc(habitRef);
       }
-
       async function toggleLogInDb(habitId, dateKey, currentStatus) {
         const habitRef = doc(db, "users", currentUser.uid, "habits", habitId);
         await updateDoc(habitRef, { [`log.${dateKey}`]: !currentStatus });
       }
 
-      // ==========================================
-      // DATE HELPERS
-      // ==========================================
-      function todayISO() {
-        return isoDate(new Date());
-      }
-      function yesterdayISO() {
-        const d = new Date();
-        d.setDate(d.getDate() - 1);
-        return isoDate(d);
-      }
+      function todayISO() { return isoDate(new Date()); }
+      function yesterdayISO() { const d = new Date(); d.setDate(d.getDate() - 1); return isoDate(d); }
       function isoDate(d) {
-        const y = d.getFullYear();
-        const m = String(d.getMonth() + 1).padStart(2, "0");
-        const day = String(d.getDate()).padStart(2, "0");
+        const y = d.getFullYear(); const m = String(d.getMonth() + 1).padStart(2, "0"); const day = String(d.getDate()).padStart(2, "0");
         return `${y}-${m}-${day}`;
       }
-      function startOfWeek(d) {
-        const copy = new Date(d);
-        const day = copy.getDay();
-        copy.setDate(copy.getDate() - day);
-        copy.setHours(0, 0, 0, 0);
-        return copy;
-      }
-      function addDays(d, n) {
-        const copy = new Date(d);
-        copy.setDate(copy.getDate() + n);
-        return copy;
-      }
+      function startOfWeek(d) { const copy = new Date(d); const day = copy.getDay(); copy.setDate(copy.getDate() - day); copy.setHours(0, 0, 0, 0); return copy; }
+      function addDays(d, n) { const copy = new Date(d); copy.setDate(copy.getDate() + n); return copy; }
 
-      // ==========================================
-      // HEADER LABELS
-      // ==========================================
       const todayLabelEl = document.getElementById("todayLabel");
       const weekLabelEl = document.getElementById("weekLabel");
       const fmt = new Intl.DateTimeFormat(undefined, { weekday: "long", month: "long", day: "numeric" });
@@ -2883,9 +1288,6 @@
       const wkFmt = new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric" });
       weekLabelEl.textContent = `Week of ${wkFmt.format(weekDates[0])} – ${wkFmt.format(weekDates[6])}`;
 
-      // ==========================================
-      // REGISTER HEAD
-      // ==========================================
       const headRow = document.getElementById("registerHeadRow");
       function renderHead() {
         let html = `<div class="habit-info"><div class="habit-name"><div class="title">Habit</div></div><div class="streak-col">Streak</div><div class="habit-actions"></div></div>`;
@@ -2899,101 +1301,48 @@
       }
       renderHead();
 
-      // ==========================================
-      // SCHEDULE LOGIC
-      // ==========================================
       function isApplicableDay(dateObj, habit) {
         if (habit.cadence === "weekly") return habit.days && habit.days.includes(dateObj.getDay());
         if (habit.cadence === "monthly") return habit.days && habit.days.includes(dateObj.getDate());
         return true;
       }
-
       function getCadenceText(habit) {
         if (habit.cadence === "daily") return "Daily";
-        if (habit.cadence === "weekly") {
-          if (!habit.days || habit.days.length === 0) return "Weekly";
-          return habit.days.map((d) => FULL_DOW_LABELS[d]).join(", ");
-        }
+        if (habit.cadence === "weekly") { if (!habit.days || habit.days.length === 0) return "Weekly"; return habit.days.map((d) => FULL_DOW_LABELS[d]).join(", "); }
         if (habit.cadence === "monthly") {
           if (!habit.days || habit.days.length === 0) return "Monthly";
-          const formatted = habit.days.map((d) => {
-            if (d > 3 && d < 21) return d + "th";
-            switch (d % 10) {
-              case 1: return d + "st";
-              case 2: return d + "nd";
-              case 3: return d + "rd";
-              default: return d + "th";
-            }
-          });
+          const formatted = habit.days.map((d) => { if (d > 3 && d < 21) return d + "th"; switch (d % 10) { case 1: return d + "st"; case 2: return d + "nd"; case 3: return d + "rd"; default: return d + "th"; } });
           return "Monthly: " + formatted.join(", ");
         }
         return habit.cadence;
       }
+      function getCadenceShort(habit) { return habit.cadence.charAt(0).toUpperCase() + habit.cadence.slice(1); }
 
-      function getCadenceShort(habit) {
-        return habit.cadence.charAt(0).toUpperCase() + habit.cadence.slice(1);
-      }
-
-      // ==========================================
-      // STREAK CALC
-      // ==========================================
       function computeStreak(habit) {
-        let streak = 0;
-        let cursor = new Date();
-        cursor.setHours(0, 0, 0, 0);
+        let streak = 0; let cursor = new Date(); cursor.setHours(0, 0, 0, 0);
         const todayKey = isoDate(cursor);
-        if (!(habit.log && habit.log[todayKey])) {
-          cursor = addDays(cursor, -1);
-        }
+        if (!(habit.log && habit.log[todayKey])) cursor = addDays(cursor, -1);
         for (let i = 0; i < 3650; i++) {
           const key = isoDate(cursor);
-          if (isApplicableDay(cursor, habit)) {
-            if (habit.log && habit.log[key]) {
-              streak++;
-            } else {
-              break;
-            }
-          }
+          if (isApplicableDay(cursor, habit)) { if (habit.log && habit.log[key]) streak++; else break; }
           cursor = addDays(cursor, -1);
         }
         return streak;
       }
-
       function computeLongestStreakAllTime(habit) {
         if (!habit.log || Object.keys(habit.log).length === 0) return 0;
         const dates = Object.keys(habit.log).sort();
-        const firstDate = new Date(dates[0]);
-        const lastDate = new Date();
-        let cursor = new Date(firstDate);
-        let maxStreak = 0;
-        let currentStreak = 0;
-
+        const firstDate = new Date(dates[0]); const lastDate = new Date();
+        let cursor = new Date(firstDate); let maxStreak = 0; let currentStreak = 0;
         while (cursor <= lastDate) {
           const key = isoDate(cursor);
-          if (isApplicableDay(cursor, habit)) {
-            if (habit.log[key]) {
-              currentStreak++;
-              if (currentStreak > maxStreak) maxStreak = currentStreak;
-            } else {
-              currentStreak = 0;
-            }
-          }
+          if (isApplicableDay(cursor, habit)) { if (habit.log[key]) { currentStreak++; if (currentStreak > maxStreak) maxStreak = currentStreak; } else currentStreak = 0; }
           cursor.setDate(cursor.getDate() + 1);
         }
         return maxStreak;
       }
+      function computeLongestStreakAcrossAll() { let longest = 0; habits.forEach((h) => longest = Math.max(longest, computeStreak(h))); return longest; }
 
-      function computeLongestStreakAcrossAll() {
-        let longest = 0;
-        habits.forEach((h) => {
-          longest = Math.max(longest, computeStreak(h));
-        });
-        return longest;
-      }
-
-      // ==========================================
-      // TABS
-      // ==========================================
       const tabRegisterBtn = document.getElementById("tabRegisterBtn");
       const tabCalendarBtn = document.getElementById("tabCalendarBtn");
       const tabAnalyticsBtn = document.getElementById("tabAnalyticsBtn");
@@ -3002,46 +1351,28 @@
       const analyticsView = document.getElementById("analyticsView");
 
       function showRegisterTab() {
-        tabRegisterBtn.classList.add("active");
-        tabCalendarBtn.classList.remove("active");
-        tabAnalyticsBtn.classList.remove("active");
-        registerView.style.display = "";
-        calendarView.style.display = "none";
-        analyticsView.style.display = "none";
+        tabRegisterBtn.classList.add("active"); tabCalendarBtn.classList.remove("active"); tabAnalyticsBtn.classList.remove("active");
+        registerView.style.display = ""; calendarView.style.display = "none"; analyticsView.style.display = "none";
       }
       function showCalendarTab() {
-        tabCalendarBtn.classList.add("active");
-        tabRegisterBtn.classList.remove("active");
-        tabAnalyticsBtn.classList.remove("active");
-        registerView.style.display = "none";
-        calendarView.style.display = "";
-        analyticsView.style.display = "none";
+        tabCalendarBtn.classList.add("active"); tabRegisterBtn.classList.remove("active"); tabAnalyticsBtn.classList.remove("active");
+        registerView.style.display = "none"; calendarView.style.display = ""; analyticsView.style.display = "none";
         renderCalendar();
       }
       function showAnalyticsTab() {
-        tabAnalyticsBtn.classList.add("active");
-        tabCalendarBtn.classList.remove("active");
-        tabRegisterBtn.classList.remove("active");
-        registerView.style.display = "none";
-        calendarView.style.display = "none";
-        analyticsView.style.display = "";
+        tabAnalyticsBtn.classList.add("active"); tabCalendarBtn.classList.remove("active"); tabRegisterBtn.classList.remove("active");
+        registerView.style.display = "none"; calendarView.style.display = "none"; analyticsView.style.display = "";
         renderAnalytics();
       }
-
       tabRegisterBtn.addEventListener("click", showRegisterTab);
       tabCalendarBtn.addEventListener("click", showCalendarTab);
       tabAnalyticsBtn.addEventListener("click", showAnalyticsTab);
 
-      // ==========================================
-      // CALENDAR STATE
-      // ==========================================
       const now0 = new Date();
       let calMonth = new Date(now0.getFullYear(), now0.getMonth(), 1);
       let selectedDayKey = null;
-
       const calDowRow = document.getElementById("calDowRow");
       calDowRow.innerHTML = DOW_LABELS.map((l) => `<div>${l}</div>`).join("");
-
       const calMonthLabel = document.getElementById("calMonthLabel");
       const calGrid = document.getElementById("calGrid");
       const monthFmt = new Intl.DateTimeFormat(undefined, { month: "long", year: "numeric" });
@@ -3050,19 +1381,9 @@
       const dayPanelBody = document.getElementById("dayPanelBody");
       const dayFmt = new Intl.DateTimeFormat(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
 
-      document.getElementById("calPrevBtn").addEventListener("click", () => {
-        calMonth = new Date(calMonth.getFullYear(), calMonth.getMonth() - 1, 1);
-        renderCalendar();
-      });
-      document.getElementById("calNextBtn").addEventListener("click", () => {
-        calMonth = new Date(calMonth.getFullYear(), calMonth.getMonth() + 1, 1);
-        renderCalendar();
-      });
-      document.getElementById("dayPanelClose").addEventListener("click", () => {
-        selectedDayKey = null;
-        dayPanel.style.display = "none";
-        calGrid.querySelectorAll(".cal-day.selected").forEach((el) => el.classList.remove("selected"));
-      });
+      document.getElementById("calPrevBtn").addEventListener("click", () => { calMonth = new Date(calMonth.getFullYear(), calMonth.getMonth() - 1, 1); renderCalendar(); });
+      document.getElementById("calNextBtn").addEventListener("click", () => { calMonth = new Date(calMonth.getFullYear(), calMonth.getMonth() + 1, 1); renderCalendar(); });
+      document.getElementById("dayPanelClose").addEventListener("click", () => { selectedDayKey = null; dayPanel.style.display = "none"; calGrid.querySelectorAll(".cal-day.selected").forEach((el) => el.classList.remove("selected")); });
 
       function dayCompletion(dateObj, dateKey) {
         const applicable = habits.filter((h) => isApplicableDay(dateObj, h));
@@ -3072,452 +1393,211 @@
       }
 
       function renderCalendar() {
-        calMonthLabel.textContent = monthFmt.format(calMonth);
-        calGrid.innerHTML = "";
-
-        const year = calMonth.getFullYear();
-        const month = calMonth.getMonth();
-        const firstDow = new Date(year, month, 1).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-        for (let i = 0; i < firstDow; i++) {
-          const pad = document.createElement("div");
-          pad.className = "cal-day pad";
-          calGrid.appendChild(pad);
-        }
-
+        calMonthLabel.textContent = monthFmt.format(calMonth); calGrid.innerHTML = "";
+        const year = calMonth.getFullYear(); const month = calMonth.getMonth();
+        const firstDow = new Date(year, month, 1).getDay(); const daysInMonth = new Date(year, month + 1, 0).getDate();
+        for (let i = 0; i < firstDow; i++) { const pad = document.createElement("div"); pad.className = "cal-day pad"; calGrid.appendChild(pad); }
         for (let d = 1; d <= daysInMonth; d++) {
-          const dateObj = new Date(year, month, d);
-          const key = isoDate(dateObj);
-          const isFuture = key > today;
-          const isToday = key === today;
-
-          const cell = document.createElement("div");
-          cell.className = "cal-day";
-          if (isFuture) cell.classList.add("future");
-          if (isToday) cell.classList.add("today");
-          if (key === selectedDayKey) cell.classList.add("selected");
-
+          const dateObj = new Date(year, month, d); const key = isoDate(dateObj);
+          const isFuture = key > today; const isToday = key === today;
+          const cell = document.createElement("div"); cell.className = "cal-day";
+          if (isFuture) cell.classList.add("future"); if (isToday) cell.classList.add("today"); if (key === selectedDayKey) cell.classList.add("selected");
           const frac = isFuture ? null : dayCompletion(dateObj, key);
           if (frac === null) cell.classList.add("no-habits");
-
           if (!isFuture && frac !== null) {
-            const dot = document.createElement("div");
-            dot.className = "status-dot";
-            if (frac === 1) dot.classList.add("dot-green");
-            else if (frac > 0) dot.classList.add("dot-yellow");
-            else dot.classList.add("dot-red");
+            const dot = document.createElement("div"); dot.className = "status-dot";
+            if (frac === 1) dot.classList.add("dot-green"); else if (frac > 0) dot.classList.add("dot-yellow"); else dot.classList.add("dot-red");
             cell.appendChild(dot);
           }
-
-          const numEl = document.createElement("div");
-          numEl.className = "num";
-          numEl.textContent = d;
-          cell.appendChild(numEl);
+          const numEl = document.createElement("div"); numEl.className = "num"; numEl.textContent = d; cell.appendChild(numEl);
           cell.setAttribute("aria-label", dayFmt.format(dateObj));
-
-          if (!isFuture) {
-            cell.addEventListener("click", () => selectDay(key, dateObj));
-          }
+          if (!isFuture) cell.addEventListener("click", () => selectDay(key, dateObj));
           calGrid.appendChild(cell);
         }
-
         if (selectedDayKey) renderDayPanel();
       }
 
       function selectDay(key, dateObj) {
         selectedDayKey = key;
-        calGrid.querySelectorAll(".cal-day").forEach((el) => {
-          el.classList.toggle("selected", el.getAttribute("aria-label") === dayFmt.format(dateObj));
-        });
+        calGrid.querySelectorAll(".cal-day").forEach((el) => el.classList.toggle("selected", el.getAttribute("aria-label") === dayFmt.format(dateObj)));
         renderDayPanel();
       }
 
       function renderDayPanel() {
-        if (!selectedDayKey) {
-          dayPanel.style.display = "none";
-          return;
-        }
+        if (!selectedDayKey) { dayPanel.style.display = "none"; return; }
         const [y, m, d] = selectedDayKey.split("-").map(Number);
         const dateObj = new Date(y, m - 1, d);
         dayPanel.style.display = "block";
         dayPanelTitle.textContent = dayFmt.format(dateObj);
         dayPanelBody.innerHTML = "";
-
         const applicable = habits.filter((h) => isApplicableDay(dateObj, h));
         if (applicable.length === 0) {
-          const empty = document.createElement("div");
-          empty.className = "day-panel-empty";
+          const empty = document.createElement("div"); empty.className = "day-panel-empty";
           empty.textContent = habits.length === 0 ? "No habits in the ledger yet." : "No habits apply to this day.";
-          dayPanelBody.appendChild(empty);
-          return;
+          dayPanelBody.appendChild(empty); return;
         }
-
         const doneHabits = applicable.filter((h) => h.log && h.log[selectedDayKey]);
         const missingHabits = applicable.filter((h) => !(h.log && h.log[selectedDayKey]));
-        const isLocked = selectedDayKey < yesterday;
-        const isFuture = selectedDayKey > today;
-
+        const isLocked = selectedDayKey < yesterday; const isFuture = selectedDayKey > today;
         if (doneHabits.length > 0) {
-          const head = document.createElement("div");
-          head.className = "day-section-head";
-          head.textContent = "Completed";
-          dayPanelBody.appendChild(head);
-
+          const head = document.createElement("div"); head.className = "day-section-head"; head.textContent = "Completed"; dayPanelBody.appendChild(head);
           doneHabits.forEach((habit) => {
-            const row = document.createElement("div");
-            row.className = "day-habit-row";
-            const stamp = document.createElement("button");
-            stamp.className = "stamp done";
-            if (isFuture || isLocked) {
-              stamp.disabled = true;
-              stamp.classList.add(isFuture ? "future" : "locked");
-            } else {
-              stamp.addEventListener("click", () => toggleLogInDb(habit.id, selectedDayKey, true));
-            }
-            const name = document.createElement("div");
-            name.className = "name";
-            name.textContent = habit.name;
-            row.appendChild(stamp);
-            row.appendChild(name);
-            dayPanelBody.appendChild(row);
+            const row = document.createElement("div"); row.className = "day-habit-row";
+            const stamp = document.createElement("button"); stamp.className = "stamp done";
+            if (isFuture || isLocked) { stamp.disabled = true; stamp.classList.add(isFuture ? "future" : "locked"); }
+            else stamp.addEventListener("click", () => toggleLogInDb(habit.id, selectedDayKey, true));
+            const name = document.createElement("div"); name.className = "name"; name.textContent = habit.name;
+            row.appendChild(stamp); row.appendChild(name); dayPanelBody.appendChild(row);
           });
         }
-
         if (missingHabits.length > 0) {
-          const head = document.createElement("div");
-          head.className = "day-section-head missing";
-          head.textContent = "Missing";
-          dayPanelBody.appendChild(head);
-
+          const head = document.createElement("div"); head.className = "day-section-head missing"; head.textContent = "Missing"; dayPanelBody.appendChild(head);
           missingHabits.forEach((habit) => {
-            const row = document.createElement("div");
-            row.className = "day-habit-row missing";
-            const stamp = document.createElement("button");
-            stamp.className = "stamp";
-            if (isFuture || isLocked) {
-              stamp.disabled = true;
-              stamp.classList.add(isFuture ? "future" : "locked");
-            } else {
-              stamp.addEventListener("click", () => toggleLogInDb(habit.id, selectedDayKey, false));
-            }
-            const name = document.createElement("div");
-            name.className = "name";
-            name.textContent = habit.name;
-            row.appendChild(stamp);
-            row.appendChild(name);
-            dayPanelBody.appendChild(row);
+            const row = document.createElement("div"); row.className = "day-habit-row missing";
+            const stamp = document.createElement("button"); stamp.className = "stamp";
+            if (isFuture || isLocked) { stamp.disabled = true; stamp.classList.add(isFuture ? "future" : "locked"); }
+            else stamp.addEventListener("click", () => toggleLogInDb(habit.id, selectedDayKey, false));
+            const name = document.createElement("div"); name.className = "name"; name.textContent = habit.name;
+            row.appendChild(stamp); row.appendChild(name); dayPanelBody.appendChild(row);
           });
         }
       }
 
-      // ==========================================
-      // RENDERING ROWS
-      // ==========================================
       const rowsContainer = document.getElementById("habitRows");
       const emptyState = document.getElementById("emptyState");
       const registerBox = document.getElementById("registerBox");
 
       function renderRows() {
         rowsContainer.innerHTML = "";
-        if (habits.length === 0) {
-          emptyState.style.display = "block";
-          registerBox.querySelector(".register-head").style.display = "none";
-          return;
-        }
-        emptyState.style.display = "none";
-        registerBox.querySelector(".register-head").style.display = "flex";
-
+        if (habits.length === 0) { emptyState.style.display = "block"; registerBox.querySelector(".register-head").style.display = "none"; return; }
+        emptyState.style.display = "none"; registerBox.querySelector(".register-head").style.display = "flex";
         habits.forEach((habit) => {
-          const row = document.createElement("div");
-          row.className = "habit-row";
-
-          const infoDiv = document.createElement("div");
-          infoDiv.className = "habit-info";
-
-          const nameCol = document.createElement("div");
-          nameCol.className = "habit-name";
-          const titleEl = document.createElement("div");
-          titleEl.className = "title";
-          titleEl.textContent = habit.name;
-          const cadEl = document.createElement("div");
-          cadEl.className = "cadence";
-          cadEl.textContent = getCadenceText(habit);
-          nameCol.appendChild(titleEl);
-          nameCol.appendChild(cadEl);
-          infoDiv.appendChild(nameCol);
-
-          const streakCol = document.createElement("div");
-          streakCol.className = "streak-col";
-          const s = computeStreak(habit);
-          streakCol.innerHTML = s > 0 ? `<b>${s}</b>` : `0`;
+          const row = document.createElement("div"); row.className = "habit-row";
+          const infoDiv = document.createElement("div"); infoDiv.className = "habit-info";
+          const nameCol = document.createElement("div"); nameCol.className = "habit-name";
+          const titleEl = document.createElement("div"); titleEl.className = "title"; titleEl.textContent = habit.name;
+          const cadEl = document.createElement("div"); cadEl.className = "cadence"; cadEl.textContent = getCadenceText(habit);
+          nameCol.appendChild(titleEl); nameCol.appendChild(cadEl); infoDiv.appendChild(nameCol);
+          const streakCol = document.createElement("div"); streakCol.className = "streak-col";
+          const s = computeStreak(habit); streakCol.innerHTML = s > 0 ? `<b>${s}</b>` : `0`;
           infoDiv.appendChild(streakCol);
-
-          const actionCol = document.createElement("div");
-          actionCol.className = "habit-actions";
-          const editBtn = document.createElement("button");
-          editBtn.className = "icon-btn";
-          editBtn.innerHTML = "✎";
-          editBtn.addEventListener("click", () => openEditModal(habit.id));
-
-          const delBtn = document.createElement("button");
-          delBtn.className = "icon-btn danger";
-          delBtn.innerHTML = "✕";
-          delBtn.addEventListener("click", () => deleteHabitFromDb(habit.id));
-
-          actionCol.appendChild(editBtn);
-          actionCol.appendChild(delBtn);
-          infoDiv.appendChild(actionCol);
-
+          const actionCol = document.createElement("div"); actionCol.className = "habit-actions";
+          const editBtn = document.createElement("button"); editBtn.className = "icon-btn"; editBtn.innerHTML = "✎"; editBtn.addEventListener("click", () => openEditModal(habit.id));
+          const delBtn = document.createElement("button"); delBtn.className = "icon-btn danger"; delBtn.innerHTML = "✕"; delBtn.addEventListener("click", () => deleteHabitFromDb(habit.id));
+          actionCol.appendChild(editBtn); actionCol.appendChild(delBtn); infoDiv.appendChild(actionCol);
           row.appendChild(infoDiv);
-
-          const weekDiv = document.createElement("div");
-          weekDiv.className = "habit-week";
-
+          const weekDiv = document.createElement("div"); weekDiv.className = "habit-week";
           weekDates.forEach((d, i) => {
-            const dayGroup = document.createElement("div");
-            dayGroup.className = "day-group";
-
-            const dayLabel = document.createElement("span");
-            dayLabel.className = "day-label";
-            dayLabel.textContent = DOW_LABELS[i];
-            dayGroup.appendChild(dayLabel);
-
-            const key = weekISO[i];
-            const applicable = isApplicableDay(d, habit);
-            const isFuture = key > today;
-            const isLocked = key < yesterday;
-            const stamp = document.createElement("button");
-            stamp.className = "stamp";
-
-            if (!applicable) {
-              stamp.style.visibility = "hidden";
-            } else {
+            const dayGroup = document.createElement("div"); dayGroup.className = "day-group";
+            const dayLabel = document.createElement("span"); dayLabel.className = "day-label"; dayLabel.textContent = DOW_LABELS[i]; dayGroup.appendChild(dayLabel);
+            const key = weekISO[i]; const applicable = isApplicableDay(d, habit); const isFuture = key > today; const isLocked = key < yesterday;
+            const stamp = document.createElement("button"); stamp.className = "stamp";
+            if (!applicable) stamp.style.visibility = "hidden";
+            else {
               const done = !!(habit.log && habit.log[key]);
               if (done) stamp.classList.add("done");
-              if (isFuture) {
-                stamp.classList.add("future");
-                stamp.disabled = true;
-              } else if (isLocked) {
-                stamp.classList.add("locked");
-                stamp.disabled = true;
-              } else {
-                stamp.addEventListener("click", () => toggleLogInDb(habit.id, key, done));
-              }
+              if (isFuture) { stamp.classList.add("future"); stamp.disabled = true; }
+              else if (isLocked) { stamp.classList.add("locked"); stamp.disabled = true; }
+              else stamp.addEventListener("click", () => toggleLogInDb(habit.id, key, done));
             }
-            dayGroup.appendChild(stamp);
-            weekDiv.appendChild(dayGroup);
+            dayGroup.appendChild(stamp); weekDiv.appendChild(dayGroup);
           });
-
-          row.appendChild(weekDiv);
-          rowsContainer.appendChild(row);
+          row.appendChild(weekDiv); rowsContainer.appendChild(row);
         });
       }
 
-      // ==========================================
-      // STATS
-      // ==========================================
       function renderStats() {
         if (habits.length === 0) {
-          document.getElementById("statCompletedToday").textContent = "0";
-          document.getElementById("statTotalToday").textContent = "0";
-          document.getElementById("statTodayPct").textContent = "—";
-          document.getElementById("statStreak").textContent = "0";
-          return;
+          document.getElementById("statCompletedToday").textContent = "0"; document.getElementById("statTotalToday").textContent = "0";
+          document.getElementById("statTodayPct").textContent = "—"; document.getElementById("statStreak").textContent = "0"; return;
         }
-
         const todaysApplicable = habits.filter((h) => isApplicableDay(new Date(), h));
         const todaysDone = todaysApplicable.filter((h) => h.log && h.log[today]);
-        const todayPct = todaysApplicable.length
-          ? Math.round((100 * todaysDone.length) / todaysApplicable.length)
-          : 0;
-
+        const todayPct = todaysApplicable.length ? Math.round((100 * todaysDone.length) / todaysApplicable.length) : 0;
         document.getElementById("statCompletedToday").textContent = todaysDone.length;
         document.getElementById("statTotalToday").textContent = todaysApplicable.length;
         document.getElementById("statTodayPct").textContent = todayPct + "%";
         document.getElementById("statStreak").textContent = computeLongestStreakAcrossAll();
       }
 
-      // ==========================================
-      // ANALYTICS LOGIC
-      // ==========================================
       let charts = {};
-      Chart.defaults.font.family = "'Space Mono', monospace";
-      Chart.defaults.color = "#5A6A70";
-      Chart.defaults.borderColor = "#D8D6CE";
+      Chart.defaults.font.family = "'Space Mono', monospace"; Chart.defaults.color = "#5A6A70"; Chart.defaults.borderColor = "#D8D6CE";
 
       function renderAnalytics() {
-        Object.values(charts).forEach((c) => c.destroy());
-        charts = {};
-
-        const anaRateEl = document.getElementById("anaRate");
-        const anaTotalEl = document.getElementById("anaTotal");
-        const anaAvgEl = document.getElementById("anaAvg");
-        const anaActiveEl = document.getElementById("anaActive");
+        Object.values(charts).forEach((c) => c.destroy()); charts = {};
+        const anaRateEl = document.getElementById("anaRate"); const anaTotalEl = document.getElementById("anaTotal");
+        const anaAvgEl = document.getElementById("anaAvg"); const anaActiveEl = document.getElementById("anaActive");
         const breakdownBody = document.getElementById("breakdownBody");
-
         if (habits.length === 0) {
-          anaRateEl.textContent = "0%";
-          anaTotalEl.textContent = "0";
-          anaAvgEl.textContent = "0";
-          anaActiveEl.textContent = "0";
-          breakdownBody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--paper-dim);">No habits to analyze yet.</td></tr>';
-          return;
+          anaRateEl.textContent = "0%"; anaTotalEl.textContent = "0"; anaAvgEl.textContent = "0"; anaActiveEl.textContent = "0";
+          breakdownBody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--paper-dim);">No habits to analyze yet.</td></tr>'; return;
         }
-
         let minDate = new Date();
-        habits.forEach((h) => {
-          if (h.log) {
-            Object.keys(h.log).forEach((d) => {
-              const dateObj = new Date(d);
-              if (dateObj < minDate) minDate = dateObj;
-            });
-          }
-        });
-
-        const todayObj = new Date();
-        todayObj.setHours(0, 0, 0, 0);
-        minDate.setHours(0, 0, 0, 0);
-
-        let totalApplicable = 0;
-        let totalDone = 0;
-        let activeDays = 0;
-
+        habits.forEach((h) => { if (h.log) { Object.keys(h.log).forEach((d) => { const dateObj = new Date(d); if (dateObj < minDate) minDate = dateObj; }); } });
+        const todayObj = new Date(); todayObj.setHours(0, 0, 0, 0); minDate.setHours(0, 0, 0, 0);
+        let totalApplicable = 0; let totalDone = 0; let activeDays = 0;
         let cursor = new Date(minDate);
         while (cursor <= todayObj) {
           activeDays++;
-          habits.forEach((h) => {
-            if (isApplicableDay(cursor, h)) {
-              totalApplicable++;
-              if (h.log && h.log[isoDate(cursor)]) totalDone++;
-            }
-          });
+          habits.forEach((h) => { if (isApplicableDay(cursor, h)) { totalApplicable++; if (h.log && h.log[isoDate(cursor)]) totalDone++; } });
           cursor.setDate(cursor.getDate() + 1);
         }
-
         const overallPct = totalApplicable > 0 ? Math.round((totalDone / totalApplicable) * 100) : 0;
         const avgPerDay = activeDays > 0 ? (totalDone / activeDays).toFixed(1) : 0;
+        anaRateEl.textContent = overallPct + "%"; anaTotalEl.textContent = totalDone; anaAvgEl.textContent = avgPerDay; anaActiveEl.textContent = habits.length;
 
-        anaRateEl.textContent = overallPct + "%";
-        anaTotalEl.textContent = totalDone;
-        anaAvgEl.textContent = avgPerDay;
-        anaActiveEl.textContent = habits.length;
-
-        // 1. 14-Day Momentum Chart
-        const mLabels = [];
-        const mData = [];
+        const mLabels = []; const mData = [];
         for (let i = 13; i >= 0; i--) {
-          const d = new Date(todayObj);
-          d.setDate(todayObj.getDate() - i);
-          const key = isoDate(d);
+          const d = new Date(todayObj); d.setDate(todayObj.getDate() - i); const key = isoDate(d);
           mLabels.push(d.toLocaleDateString(undefined, { month: "numeric", day: "numeric" }));
           const applicable = habits.filter((h) => isApplicableDay(d, h)).length;
           const done = habits.filter((h) => isApplicableDay(d, h) && h.log && h.log[key]).length;
           const pct = applicable > 0 ? Math.round((done / applicable) * 100) : 0;
           mData.push(pct);
         }
-
         charts.momentum = new Chart(document.getElementById("momentumChart"), {
-          type: "bar",
-          data: { labels: mLabels, datasets: [{ label: "Completion %", data: mData, backgroundColor: "#E76F51", borderRadius: 3 }] },
-          options: {
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-              y: { beginAtZero: true, max: 100, ticks: { color: "#5A6A70", callback: (v) => v + "%" }, grid: { color: "#D8D6CE" } },
-              x: { ticks: { color: "#5A6A70" }, grid: { display: false } }
-            }
-          }
+          type: "bar", data: { labels: mLabels, datasets: [{ label: "Completion %", data: mData, backgroundColor: "#E76F51", borderRadius: 3 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, ticks: { color: "#5A6A70", callback: (v) => v + "%" }, grid: { color: "#D8D6CE" } }, x: { ticks: { color: "#5A6A70" }, grid: { display: false } } } }
         });
 
-        // 2. Day of Week Performance Chart
-        const dLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        const dData = [0, 0, 0, 0, 0, 0, 0];
-        const dCounts = [0, 0, 0, 0, 0, 0, 0];
+        const dLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; const dData = [0, 0, 0, 0, 0, 0, 0]; const dCounts = [0, 0, 0, 0, 0, 0, 0];
         for (let i = 0; i < 90; i++) {
-          const d = new Date(todayObj);
-          d.setDate(todayObj.getDate() - i);
-          const dow = d.getDay();
-          const key = isoDate(d);
-          habits.forEach((h) => {
-            if (isApplicableDay(d, h)) {
-              dCounts[dow]++;
-              if (h.log && h.log[key]) dData[dow]++;
-            }
-          });
+          const d = new Date(todayObj); d.setDate(todayObj.getDate() - i); const dow = d.getDay(); const key = isoDate(d);
+          habits.forEach((h) => { if (isApplicableDay(d, h)) { dCounts[dow]++; if (h.log && h.log[key]) dData[dow]++; } });
         }
         const dowPcts = dData.map((done, i) => (dCounts[i] > 0 ? Math.round((done / dCounts[i]) * 100) : 0));
-
         charts.dow = new Chart(document.getElementById("dowChart"), {
-          type: "radar",
-          data: { labels: dLabels, datasets: [{ label: "Completion %", data: dowPcts, backgroundColor: "rgba(231, 111, 81, 0.2)", borderColor: "#E76F51", pointBackgroundColor: "#E76F51", pointBorderColor: "#F2EEE4", borderWidth: 2 }] },
-          options: {
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: { r: { beginAtZero: true, max: 100, angleLines: { color: "#D8D6CE" }, grid: { color: "#D8D6CE" }, pointLabels: { color: "#1B3A48", font: { size: 11 } }, ticks: { display: false, stepSize: 25 } } }
-          }
+          type: "radar", data: { labels: dLabels, datasets: [{ label: "Completion %", data: dowPcts, backgroundColor: "rgba(231, 111, 81, 0.2)", borderColor: "#E76F51", pointBackgroundColor: "#E76F51", pointBorderColor: "#F2EEE4", borderWidth: 2 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { r: { beginAtZero: true, max: 100, angleLines: { color: "#D8D6CE" }, grid: { color: "#D8D6CE" }, pointLabels: { color: "#1B3A48", font: { size: 11 } }, ticks: { display: false, stepSize: 25 } } } }
         });
 
-        // 3. 8-Week Trend Chart
-        const tLabels = [];
-        const tData = [];
+        const tLabels = []; const tData = [];
         for (let i = 7; i >= 0; i--) {
-          const wEnd = new Date(todayObj);
-          wEnd.setDate(todayObj.getDate() - i * 7);
-          const wStart = startOfWeek(wEnd);
+          const wEnd = new Date(todayObj); wEnd.setDate(todayObj.getDate() - i * 7); const wStart = startOfWeek(wEnd);
           tLabels.push(`Wk of ${wStart.toLocaleDateString(undefined, { month: "short", day: "numeric" })}`);
-          let wkApplicable = 0;
-          let wkDone = 0;
+          let wkApplicable = 0; let wkDone = 0;
           for (let j = 0; j < 7; j++) {
-            const d = addDays(wStart, j);
-            if (d > todayObj) break;
-            const key = isoDate(d);
-            habits.forEach((h) => {
-              if (isApplicableDay(d, h)) {
-                wkApplicable++;
-                if (h.log && h.log[key]) wkDone++;
-              }
-            });
+            const d = addDays(wStart, j); if (d > todayObj) break; const key = isoDate(d);
+            habits.forEach((h) => { if (isApplicableDay(d, h)) { wkApplicable++; if (h.log && h.log[key]) wkDone++; } });
           }
-          const wkPct = wkApplicable > 0 ? Math.round((wkDone / wkApplicable) * 100) : 0;
-          tData.push(wkPct);
+          const wkPct = wkApplicable > 0 ? Math.round((wkDone / wkApplicable) * 100) : 0; tData.push(wkPct);
         }
-
         charts.trend = new Chart(document.getElementById("trendChart"), {
-          type: "line",
-          data: { labels: tLabels, datasets: [{ label: "Weekly Completion %", data: tData, borderColor: "#2A9D8F", backgroundColor: "rgba(42, 157, 143, 0.15)", fill: true, tension: 0.3, pointBackgroundColor: "#2A9D8F", pointBorderColor: "#F2EEE4", borderWidth: 2 }] },
-          options: {
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-              y: { beginAtZero: true, max: 100, ticks: { color: "#5A6A70", callback: (v) => v + "%" }, grid: { color: "#D8D6CE" } },
-              x: { ticks: { color: "#5A6A70" }, grid: { display: false } }
-            }
-          }
+          type: "line", data: { labels: tLabels, datasets: [{ label: "Weekly Completion %", data: tData, borderColor: "#2A9D8F", backgroundColor: "rgba(42, 157, 143, 0.15)", fill: true, tension: 0.3, pointBackgroundColor: "#2A9D8F", pointBorderColor: "#F2EEE4", borderWidth: 2 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, ticks: { color: "#5A6A70", callback: (v) => v + "%" }, grid: { color: "#D8D6CE" } }, x: { ticks: { color: "#5A6A70" }, grid: { display: false } } } }
         });
 
-        // 4. 12-Month Overview Chart
-        const monLabels = [];
-        const monData = [];
-        const monCounts = [];
+        const monLabels = []; const monData = []; const monCounts = [];
         for (let i = 0; i < 12; i++) monCounts.push({ applicable: 0, done: 0 });
-
         for (let i = 0; i < 365; i++) {
-          const d = new Date(todayObj);
-          d.setDate(todayObj.getDate() - i);
+          const d = new Date(todayObj); d.setDate(todayObj.getDate() - i);
           const monthDiff = d.getFullYear() * 12 + d.getMonth() - (todayObj.getFullYear() * 12 + todayObj.getMonth());
           const targetIdx = 11 + monthDiff;
           if (targetIdx >= 0 && targetIdx < 12) {
             const key = isoDate(d);
-            habits.forEach((h) => {
-              if (isApplicableDay(d, h)) {
-                monCounts[targetIdx].applicable++;
-                if (h.log && h.log[key]) monCounts[targetIdx].done++;
-              }
-            });
+            habits.forEach((h) => { if (isApplicableDay(d, h)) { monCounts[targetIdx].applicable++; if (h.log && h.log[key]) monCounts[targetIdx].done++; } });
           }
         }
-
         const monthFmtShort = new Intl.DateTimeFormat(undefined, { month: "short" });
         for (let i = 11; i >= 0; i--) {
           const d = new Date(todayObj.getFullYear(), todayObj.getMonth() - i, 1);
@@ -3525,151 +1605,71 @@
           const pct = monCounts[i].applicable > 0 ? Math.round((monCounts[i].done / monCounts[i].applicable) * 100) : 0;
           monData.push(pct);
         }
-
         charts.monthly = new Chart(document.getElementById("monthlyChart"), {
-          type: "bar",
-          data: { labels: monLabels, datasets: [{ label: "Monthly Completion %", data: monData, backgroundColor: "#1B3A48", borderRadius: 3 }] },
-          options: {
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-              y: { beginAtZero: true, max: 100, ticks: { color: "#5A6A70", callback: (v) => v + "%" }, grid: { color: "#D8D6CE" } },
-              x: { ticks: { color: "#5A6A70" }, grid: { display: false } }
-            }
-          }
+          type: "bar", data: { labels: monLabels, datasets: [{ label: "Monthly Completion %", data: monData, backgroundColor: "#1B3A48", borderRadius: 3 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, ticks: { color: "#5A6A70", callback: (v) => v + "%" }, grid: { color: "#D8D6CE" } }, x: { ticks: { color: "#5A6A70" }, grid: { display: false } } } }
         });
 
-        // 5. Habit Breakdown Table
         breakdownBody.innerHTML = "";
         habits.forEach((h) => {
-          const tr = document.createElement("tr");
-          let hApplicable = 0;
-          let hDone = 0;
+          const tr = document.createElement("tr"); let hApplicable = 0; let hDone = 0;
           if (h.log && Object.keys(h.log).length > 0) {
-            const firstLog = new Date(Object.keys(h.log).sort()[0]);
-            firstLog.setHours(0, 0, 0, 0);
+            const firstLog = new Date(Object.keys(h.log).sort()[0]); firstLog.setHours(0, 0, 0, 0);
             let c = new Date(firstLog);
-            while (c <= todayObj) {
-              if (isApplicableDay(c, h)) {
-                hApplicable++;
-                if (h.log && h.log[isoDate(c)]) hDone++;
-              }
-              c.setDate(c.getDate() + 1);
-            }
+            while (c <= todayObj) { if (isApplicableDay(c, h)) { hApplicable++; if (h.log && h.log[isoDate(c)]) hDone++; } c.setDate(c.getDate() + 1); }
           }
           const hPct = hApplicable > 0 ? Math.round((hDone / hApplicable) * 100) : 0;
-          const currStreak = computeStreak(h);
-          const bestStreak = computeLongestStreakAllTime(h);
-
-          tr.innerHTML = `
-            <td>${h.name}</td>
-            <td style="color:var(--teal); font-family:'Space Mono', monospace; font-size:0.75rem;">${getCadenceShort(h)}</td>
-            <td><div class="num brass">${hPct}%</div><div class="progress-bar"><div class="fill" style="width:${hPct}%"></div></div></td>
-            <td class="num">${currStreak}d</td>
-            <td class="num brass">${bestStreak}d</td>
-          `;
+          const currStreak = computeStreak(h); const bestStreak = computeLongestStreakAllTime(h);
+          tr.innerHTML = `<td>${h.name}</td><td style="color:var(--teal); font-family:'Space Mono', monospace; font-size:0.75rem;">${getCadenceShort(h)}</td><td><div class="num brass">${hPct}%</div><div class="progress-bar"><div class="fill" style="width:${hPct}%"></div></div></td><td class="num">${currStreak}d</td><td class="num brass">${bestStreak}d</td>`;
           breakdownBody.appendChild(tr);
         });
       }
 
       function renderAll() {
-        renderRows();
-        renderStats();
+        renderRows(); renderStats();
         if (calendarView.style.display !== "none") renderCalendar();
         if (analyticsView.style.display !== "none") renderAnalytics();
       }
 
-      // ==========================================
-      // WIRE UP ADD FORM
-      // ==========================================
       const input = document.getElementById("newHabitInput");
       const cadenceSelect = document.getElementById("newHabitCadence");
       const addBtn = document.getElementById("addHabitBtn");
-
       const freqOptions = document.getElementById("freqOptions");
       const weeklyOptions = document.getElementById("weeklyOptions");
       const monthlyOptions = document.getElementById("monthlyOptions");
       const weeklyDayPickers = document.getElementById("weeklyDayPickers");
       const monthlyDatePickers = document.getElementById("monthlyDatePickers");
-
       let tempSelectedDays = [];
 
       FULL_DOW_LABELS.forEach((day, idx) => {
-        const btn = document.createElement("button");
-        btn.className = "pick-btn";
-        btn.textContent = day;
-        btn.dataset.day = idx;
-        btn.addEventListener("click", (e) => {
-          e.preventDefault();
-          btn.classList.toggle("active");
-          const dayVal = parseInt(btn.dataset.day);
-          if (tempSelectedDays.includes(dayVal)) {
-            tempSelectedDays = tempSelectedDays.filter((d) => d !== dayVal);
-          } else {
-            tempSelectedDays.push(dayVal);
-          }
-        });
+        const btn = document.createElement("button"); btn.className = "pick-btn"; btn.textContent = day; btn.dataset.day = idx;
+        btn.addEventListener("click", (e) => { e.preventDefault(); btn.classList.toggle("active"); const dayVal = parseInt(btn.dataset.day); if (tempSelectedDays.includes(dayVal)) tempSelectedDays = tempSelectedDays.filter((d) => d !== dayVal); else tempSelectedDays.push(dayVal); });
         weeklyDayPickers.appendChild(btn);
       });
-
       for (let i = 1; i <= 31; i++) {
-        const btn = document.createElement("button");
-        btn.className = "pick-btn";
-        btn.textContent = i;
-        btn.dataset.date = i;
-        btn.addEventListener("click", (e) => {
-          e.preventDefault();
-          btn.classList.toggle("active");
-          const dateVal = parseInt(btn.dataset.date);
-          if (tempSelectedDays.includes(dateVal)) {
-            tempSelectedDays = tempSelectedDays.filter((d) => d !== dateVal);
-          } else {
-            tempSelectedDays.push(dateVal);
-          }
-        });
+        const btn = document.createElement("button"); btn.className = "pick-btn"; btn.textContent = i; btn.dataset.date = i;
+        btn.addEventListener("click", (e) => { e.preventDefault(); btn.classList.toggle("active"); const dateVal = parseInt(btn.dataset.date); if (tempSelectedDays.includes(dateVal)) tempSelectedDays = tempSelectedDays.filter((d) => d !== dateVal); else tempSelectedDays.push(dateVal); });
         monthlyDatePickers.appendChild(btn);
       }
-
       cadenceSelect.addEventListener("change", () => {
-        const val = cadenceSelect.value;
-        tempSelectedDays = [];
+        const val = cadenceSelect.value; tempSelectedDays = [];
         document.querySelectorAll("#freqOptions .pick-btn").forEach((b) => b.classList.remove("active"));
-        if (val === "weekly") {
-          freqOptions.style.display = "block";
-          weeklyOptions.style.display = "block";
-          monthlyOptions.style.display = "none";
-        } else if (val === "monthly") {
-          freqOptions.style.display = "block";
-          weeklyOptions.style.display = "none";
-          monthlyOptions.style.display = "block";
-        } else {
-          freqOptions.style.display = "none";
-        }
+        if (val === "weekly") { freqOptions.style.display = "block"; weeklyOptions.style.display = "block"; monthlyOptions.style.display = "none"; }
+        else if (val === "monthly") { freqOptions.style.display = "block"; weeklyOptions.style.display = "none"; monthlyOptions.style.display = "block"; }
+        else freqOptions.style.display = "none";
       });
 
       function submitNewHabit() {
-        const val = input.value.trim();
-        if (!val) return input.focus();
+        const val = input.value.trim(); if (!val) return input.focus();
         const cadence = cadenceSelect.value;
-        if ((cadence === "weekly" || cadence === "monthly") && tempSelectedDays.length === 0) {
-          return alert(`Please select at least one day for your ${cadence} habit.`);
-        }
+        if ((cadence === "weekly" || cadence === "monthly") && tempSelectedDays.length === 0) return alert(`Please select at least one day for your ${cadence} habit.`);
         const sortedDays = [...tempSelectedDays].sort((a, b) => a - b);
         addHabitToDb(val, cadence, sortedDays);
-        input.value = "";
-        cadenceSelect.value = "daily";
-        cadenceSelect.dispatchEvent(new Event("change"));
-        input.focus();
+        input.value = ""; cadenceSelect.value = "daily"; cadenceSelect.dispatchEvent(new Event("change")); input.focus();
       }
-
       addBtn.addEventListener("click", submitNewHabit);
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") submitNewHabit();
-      });
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") submitNewHabit(); });
 
-      // ==========================================
-      // WIRE UP EDIT MODAL (Habit)
-      // ==========================================
       const editOverlay = document.getElementById("editOverlay");
       const editNameInput = document.getElementById("editNameInput");
       const editCadenceSelect = document.getElementById("editCadenceSelect");
@@ -3680,104 +1680,48 @@
       const editMonthlyDatePickers = document.getElementById("editMonthlyDatePickers");
       const cancelEditBtn = document.getElementById("cancelEditBtn");
       const saveEditBtn = document.getElementById("saveEditBtn");
-
-      let editSelectedDays = [];
-      let editingHabitId = null;
+      let editSelectedDays = []; let editingHabitId = null;
 
       FULL_DOW_LABELS.forEach((day, idx) => {
-        const btn = document.createElement("button");
-        btn.className = "pick-btn";
-        btn.textContent = day;
-        btn.dataset.day = idx;
-        btn.addEventListener("click", (e) => {
-          e.preventDefault();
-          btn.classList.toggle("active");
-          const dayVal = parseInt(btn.dataset.day);
-          if (editSelectedDays.includes(dayVal)) {
-            editSelectedDays = editSelectedDays.filter((d) => d !== dayVal);
-          } else {
-            editSelectedDays.push(dayVal);
-          }
-        });
+        const btn = document.createElement("button"); btn.className = "pick-btn"; btn.textContent = day; btn.dataset.day = idx;
+        btn.addEventListener("click", (e) => { e.preventDefault(); btn.classList.toggle("active"); const dayVal = parseInt(btn.dataset.day); if (editSelectedDays.includes(dayVal)) editSelectedDays = editSelectedDays.filter((d) => d !== dayVal); else editSelectedDays.push(dayVal); });
         editWeeklyDayPickers.appendChild(btn);
       });
-
       for (let i = 1; i <= 31; i++) {
-        const btn = document.createElement("button");
-        btn.className = "pick-btn";
-        btn.textContent = i;
-        btn.dataset.date = i;
-        btn.addEventListener("click", (e) => {
-          e.preventDefault();
-          btn.classList.toggle("active");
-          const dateVal = parseInt(btn.dataset.date);
-          if (editSelectedDays.includes(dateVal)) {
-            editSelectedDays = editSelectedDays.filter((d) => d !== dateVal);
-          } else {
-            editSelectedDays.push(dateVal);
-          }
-        });
+        const btn = document.createElement("button"); btn.className = "pick-btn"; btn.textContent = i; btn.dataset.date = i;
+        btn.addEventListener("click", (e) => { e.preventDefault(); btn.classList.toggle("active"); const dateVal = parseInt(btn.dataset.date); if (editSelectedDays.includes(dateVal)) editSelectedDays = editSelectedDays.filter((d) => d !== dateVal); else editSelectedDays.push(dateVal); });
         editMonthlyDatePickers.appendChild(btn);
       }
-
       editCadenceSelect.addEventListener("change", () => {
-        const val = editCadenceSelect.value;
-        editSelectedDays = [];
+        const val = editCadenceSelect.value; editSelectedDays = [];
         document.querySelectorAll("#editFreqOptions .pick-btn").forEach((b) => b.classList.remove("active"));
-        if (val === "weekly") {
-          editFreqOptions.style.display = "block";
-          editWeeklyOptions.style.display = "block";
-          editMonthlyOptions.style.display = "none";
-        } else if (val === "monthly") {
-          editFreqOptions.style.display = "block";
-          editWeeklyOptions.style.display = "none";
-          editMonthlyOptions.style.display = "block";
-        } else {
-          editFreqOptions.style.display = "none";
-        }
+        if (val === "weekly") { editFreqOptions.style.display = "block"; editWeeklyOptions.style.display = "block"; editMonthlyOptions.style.display = "none"; }
+        else if (val === "monthly") { editFreqOptions.style.display = "block"; editWeeklyOptions.style.display = "none"; editMonthlyOptions.style.display = "block"; }
+        else editFreqOptions.style.display = "none";
       });
 
       function openEditModal(habitId) {
-        const habit = habits.find((h) => h.id === habitId);
-        if (!habit) return;
-        editingHabitId = habitId;
-        editNameInput.value = habit.name;
-        editCadenceSelect.value = habit.cadence;
+        const habit = habits.find((h) => h.id === habitId); if (!habit) return;
+        editingHabitId = habitId; editNameInput.value = habit.name; editCadenceSelect.value = habit.cadence;
         editCadenceSelect.dispatchEvent(new Event("change"));
-
         editSelectedDays = habit.days ? [...habit.days] : [];
         document.querySelectorAll("#editFreqOptions .pick-btn").forEach((b) => b.classList.remove("active"));
-        editSelectedDays.forEach((d) => {
-          const btn = document.querySelector(`#editFreqOptions .pick-btn[data-day="${d}"], #editFreqOptions .pick-btn[data-date="${d}"]`);
-          if (btn) btn.classList.add("active");
-        });
+        editSelectedDays.forEach((d) => { const btn = document.querySelector(`#editFreqOptions .pick-btn[data-day="${d}"], #editFreqOptions .pick-btn[data-date="${d}"]`); if (btn) btn.classList.add("active"); });
         editOverlay.classList.add("active");
       }
-
-      function closeEditModal() {
-        editingHabitId = null;
-        editOverlay.classList.remove("active");
-      }
-
+      function closeEditModal() { editingHabitId = null; editOverlay.classList.remove("active"); }
       cancelEditBtn.addEventListener("click", closeEditModal);
-
       saveEditBtn.addEventListener("click", () => {
-        if (!editingHabitId) return;
-        const newName = editNameInput.value.trim();
-        if (!newName) return alert("Habit name cannot be empty.");
+        if (!editingHabitId) return; const newName = editNameInput.value.trim(); if (!newName) return alert("Habit name cannot be empty.");
         const newCadence = editCadenceSelect.value;
-        if ((newCadence === "weekly" || newCadence === "monthly") && editSelectedDays.length === 0) {
-          return alert(`Please select at least one day for your ${newCadence} habit.`);
-        }
+        if ((newCadence === "weekly" || newCadence === "monthly") && editSelectedDays.length === 0) return alert(`Please select at least one day for your ${newCadence} habit.`);
         const sortedDays = [...editSelectedDays].sort((a, b) => a - b);
         updateHabitInDb(editingHabitId, { name: newName, cadence: newCadence, days: sortedDays });
         closeEditModal();
       });
 
       document.querySelectorAll(".modal-overlay").forEach((overlay) => {
-        overlay.addEventListener("click", (e) => {
-          if (e.target === overlay) overlay.classList.remove("active");
-        });
+        overlay.addEventListener("click", (e) => { if (e.target === overlay) overlay.classList.remove("active"); });
       });
     </script>
   </body>
